@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PLANIFICACIÓN EF | Kinetic Nature</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Lexend:wght@300;400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Anton:wght@100..900&amp;family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+        }
+        .glass-card {
+            background: rgba(23, 28, 32, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(132, 149, 134, 0.1);
+        }
+        .kinetic-glow {
+            filter: drop-shadow(0 0 8px rgba(0, 255, 148, 0.3));
+        }
+        body {
+            background-color: #0f1418;
+            color: #dfe3e9;
+            overflow-x: hidden;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-highest": "#30353a",
+                      "error-container": "#93000a",
+                      "on-error": "#690005",
+                      "surface-container-low": "#171c20",
+                      "on-tertiary-container": "#a74400",
+                      "secondary": "#89ceff",
+                      "on-primary-fixed-variant": "#00522c",
+                      "secondary-fixed": "#c9e6ff",
+                      "on-secondary": "#00344d",
+                      "secondary-fixed-dim": "#89ceff",
+                      "surface-container-high": "#262b2f",
+                      "surface-variant": "#30353a",
+                      "primary-container": "#00ff94",
+                      "inverse-on-surface": "#2c3135",
+                      "outline-variant": "#3b4b3e",
+                      "on-tertiary-fixed-variant": "#7a3000",
+                      "surface-bright": "#353a3e",
+                      "tertiary-fixed-dim": "#ffb693",
+                      "tertiary": "#fffaff",
+                      "on-tertiary-fixed": "#351000",
+                      "surface-tint": "#00e383",
+                      "background": "#0f1418",
+                      "on-primary": "#00391d",
+                      "on-surface-variant": "#b9cbbb",
+                      "outline": "#849586",
+                      "on-tertiary": "#561f00",
+                      "tertiary-container": "#ffd7c6",
+                      "primary-fixed": "#5bffa1",
+                      "on-secondary-container": "#00344e",
+                      "surface": "#0f1418",
+                      "on-secondary-fixed-variant": "#004c6e",
+                      "on-error-container": "#ffdad6",
+                      "inverse-primary": "#006d3c",
+                      "on-secondary-fixed": "#001e2f",
+                      "primary": "#f2fff1",
+                      "on-surface": "#dfe3e9",
+                      "surface-container-lowest": "#0a0f13",
+                      "surface-container": "#1b2024",
+                      "inverse-surface": "#dfe3e9",
+                      "surface-dim": "#0f1418",
+                      "primary-fixed-dim": "#00e383",
+                      "on-background": "#dfe3e9",
+                      "on-primary-fixed": "#00210e",
+                      "error": "#ffb4ab",
+                      "secondary-container": "#00a2e6",
+                      "tertiary-fixed": "#ffdbcc",
+                      "on-primary-container": "#00713f"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-desktop": "64px",
+                      "margin-mobile": "16px",
+                      "max-width": "1440px",
+                      "gutter": "24px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": ["Anton"],
+                      "body-lg": ["Lexend"],
+                      "label-md": ["Lexend"],
+                      "label-sm": ["Lexend"],
+                      "headline-lg": ["Anton"],
+                      "body-md": ["Lexend"],
+                      "headline-md": ["Anton"],
+                      "display-xl": ["Anton"]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": ["32px", {"lineHeight": "38px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-md": ["32px", {"lineHeight": "40px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                      "display-xl": ["80px", {"lineHeight": "88px", "letterSpacing": "0.02em", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-background font-body-md">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface w-full top-0 sticky z-[100] bg-surface-container dark:bg-surface-container border-b border-outline-variant/20 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 backdrop-blur-xl">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary-fixed dark:text-primary-fixed-dim text-3xl" data-icon="sports_score">sports_score</span>
+<h1 class="font-display-xl text-display-xl text-primary-fixed uppercase tracking-tighter hidden md:block">PLANIFICACIÓN EF</h1>
+<h1 class="font-headline-md text-headline-md text-primary-fixed uppercase md:hidden">PLANIFICACIÓN EF</h1>
+</div>
+<nav class="hidden md:flex gap-8">
+<a class="text-primary dark:text-primary-fixed-dim font-label-md text-label-md uppercase tracking-widest active:scale-95 duration-100" href="#">Proyectos</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md uppercase tracking-widest hover:text-primary-fixed-dim transition-colors duration-200" href="#">Recursos</a>
+</nav>
+<div class="flex items-center gap-4">
+<img alt="Profile" class="w-10 h-10 rounded-full border border-primary-fixed/30 kinetic-glow" data-alt="A stylized professional profile avatar for a physical education teacher, featuring sleek athletic wear with subtle kinetic glow accents. The lighting is cinematic, highlighting the teacher's focused and energetic demeanor against a high-contrast, tech-infused training center background. The color palette consists of deep dark tones and vibrant neon greens consistent with a futuristic athletic brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3zmrHKaO9WKEO-7An7DcDt0t00rA3SY5zg-9EWYSPkgl0S-wL-jc_W9nFM4-YuEUlluRSxdlZMAVPuFVW8RJXuATgHaosmxBePit8IzAoTF-27Wvbyv34PGKg7QsL_5tF7OhHWrPXJ4QLi-4Y7UggiMGajpQD7ObsfMvqL9Q-HyrI8b2jqAajonKtA0cn0T0TWyeDYA_HVBcDASmx0QLySV7iG1tNudxJnRd3hAI0xaGwjEl1LROxhIWB4XehCg4bx1YmMt81XFXG"/>
+</div>
+</header>
+<main class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-12 pb-32">
+<!-- Hero Section / Search -->
+<section class="mb-16">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-8 flex flex-col justify-center">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-4 text-primary-fixed">ESTRATEGIA MAESTRA <span class="text-on-surface">VENEZUELA</span></h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Gestión integral de contenidos programáticos, temas generadores y referentes teórico-prácticos para el sistema educativo nacional.</p>
+</div>
+<div class="md:col-span-4 glass-card p-6 rounded-xl flex items-center justify-center">
+<div class="w-full">
+<label class="font-label-sm text-label-sm uppercase mb-2 block text-primary-fixed">Buscar Contenido</label>
+<div class="relative">
+<input class="w-full bg-surface-container border-outline-variant/30 text-on-surface rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary-container outline-none" placeholder="Ej: Atletismo, Recreación..." type="text"/>
+<span class="material-symbols-outlined absolute right-3 top-3 text-primary-fixed" data-icon="search">search</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid: Core Content -->
+<div class="grid grid-cols-1 md:grid-cols-12 md:grid-rows-2 gap-gutter h-auto md:h-[800px]">
+<!-- Planificación Anual Card -->
+<div class="md:col-span-4 md:row-span-2 glass-card rounded-xl overflow-hidden relative group hover:border-primary-fixed/40 transition-all duration-300">
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent z-10"></div>
+<img class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-110 transition-transform duration-700" data-alt="A macro shot of a sleek, futuristic physical education curriculum planner with neon green grid lines on a digital tablet. The background is a dark, high-performance training facility with soft ambient lighting. The scene conveys a sense of organization, high-level athletic planning, and technological precision in sports education." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBECNQoy-tRbms9m-Urxk-ILxvD9mQZJQvS7cskDmPIP0rPtO6XFY3bqmeZDL58M-ZyIjRZCD2ABVUHU0RUF_mz6aktj6WagJcHpZuVJUqUyprTs74wLkhwhycDj20eSAqlts6_wyp0YWEpGeYmyGQpWKOTxp5eOgkH4qcG7d99u8dtKqO4Sc2OF7O0weQfhKHOFsIRkR1_wxxeoPdn4ADVUWrkzBjGX1o11ryEqUPTGz_c5Awwg0g1lgUD9vjY-7lwZFv6PCkjx6e7"/>
+<div class="relative z-20 p-8 h-full flex flex-col justify-end">
+<span class="material-symbols-outlined text-primary-fixed text-4xl mb-4" data-icon="calendar_today">calendar_today</span>
+<h3 class="font-headline-md text-headline-md text-white mb-2">PLANIFICACIÓN ANUAL</h3>
+<p class="font-body-md text-on-surface-variant mb-6">Cronograma estructurado por lapsos pedagógicos y efemérides deportivas.</p>
+<button class="bg-primary-container text-on-primary-container font-label-md py-3 rounded-lg hover:scale-105 active:scale-95 transition-all">ACCEDER AL PLAN</button>
+</div>
+</div>
+<!-- Temas Generadores Card -->
+<div class="md:col-span-8 md:row-span-1 glass-card rounded-xl p-8 flex flex-col md:flex-row gap-8 items-center border-l-4 border-l-primary-fixed">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary-fixed" data-icon="psychology">psychology</span>
+<h3 class="font-headline-md text-headline-md">TEMAS GENERADORES</h3>
+</div>
+<p class="font-body-md text-on-surface-variant mb-4">Ejes centrales que articulan el conocimiento teórico y la práctica motriz en el aula.</p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-container-highest px-3 py-1 rounded-full text-label-sm font-label-sm text-secondary">Identidad Nacional</span>
+<span class="bg-surface-container-highest px-3 py-1 rounded-full text-label-sm font-label-sm text-secondary">Cuerpo y Salud</span>
+<span class="bg-surface-container-highest px-3 py-1 rounded-full text-label-sm font-label-sm text-secondary">Ambiente</span>
+</div>
+</div>
+<div class="w-full md:w-48 h-48 bg-surface-container-highest rounded-xl flex items-center justify-center border border-outline-variant/20">
+<span class="material-symbols-outlined text-6xl text-primary-fixed/20" data-icon="hub">hub</span>
+</div>
+</div>
+<!-- Referentes Teóricos Card -->
+<div class="md:col-span-4 md:row-span-1 glass-card rounded-xl p-6 hover:translate-y-[-4px] transition-all">
+<span class="material-symbols-outlined text-primary-fixed mb-2" data-icon="menu_book">menu_book</span>
+<h4 class="font-label-md text-label-md text-primary-fixed uppercase tracking-widest mb-2">REFERENTES</h4>
+<p class="font-body-md text-on-surface-variant mb-4">Base legal y pedagógica de la Educación Física en Venezuela.</p>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-3 bg-surface-container rounded-lg group cursor-pointer hover:bg-primary-container/10">
+<span class="font-label-sm text-label-sm">Currículo Nacional</span>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 text-primary-fixed" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container rounded-lg group cursor-pointer hover:bg-primary-container/10">
+<span class="font-label-sm text-label-sm">Ley del Deporte</span>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 text-primary-fixed" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Estrategias Card -->
+<div class="md:col-span-4 md:row-span-1 glass-card rounded-xl p-6 bg-primary-container/5 border-primary-container/20">
+<span class="material-symbols-outlined text-primary-fixed mb-2" data-icon="fitness_center">fitness_center</span>
+<h4 class="font-label-md text-label-md text-primary-fixed uppercase tracking-widest mb-2">ESTRATEGIAS</h4>
+<p class="font-body-md text-on-surface-variant">Métodos de enseñanza dinámicos para el desarrollo de habilidades kinestésicas.</p>
+<div class="mt-4 h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[75%] shadow-[0_0_10px_#00ff94]"></div>
+</div>
+<p class="text-[10px] uppercase font-label-sm mt-2 text-primary-fixed/60">75% Contenido Práctico</p>
+</div>
+</div>
+<!-- Secondary Section: Evaluaciones & Recursos -->
+<section class="mt-16">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-8">SISTEMA DE EVALUACIÓN</h2>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="bg-surface-container rounded-xl p-6 border border-outline-variant/10 group cursor-pointer hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-primary-fixed mb-4" data-icon="fact_check">fact_check</span>
+<h5 class="font-label-md text-label-md mb-2">FORMATIVA</h5>
+<p class="text-xs text-on-surface-variant">Seguimiento continuo del progreso motor y actitudinal.</p>
+</div>
+<div class="bg-surface-container rounded-xl p-6 border border-outline-variant/10 group cursor-pointer hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-secondary mb-4" data-icon="grade">grade</span>
+<h5 class="font-label-md text-label-md mb-2">SUMATIVA</h5>
+<p class="text-xs text-on-surface-variant">Valoración de competencias técnicas alcanzadas.</p>
+</div>
+<div class="bg-surface-container rounded-xl p-6 border border-outline-variant/10 group cursor-pointer hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-tertiary-fixed mb-4" data-icon="groups">groups</span>
+<h5 class="font-label-md text-label-md mb-2">COEVALUACIÓN</h5>
+<p class="text-xs text-on-surface-variant">Participación del grupo en el proceso de valoración.</p>
+</div>
+<div class="bg-surface-container-highest rounded-xl p-6 border border-primary-fixed/20 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-2">
+<span class="flex h-2 w-2 rounded-full bg-primary-container animate-pulse"></span>
+</div>
+<span class="material-symbols-outlined text-primary-fixed mb-4" data-icon="analytics">analytics</span>
+<h5 class="font-label-md text-label-md mb-2">MÉTRICAS IA</h5>
+<p class="text-xs text-on-surface-variant">Análisis predictivo de rendimiento estudiantil.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-4 pb-4 pt-2 bg-surface-container-lowest/80 backdrop-blur-xl border-t border-outline-variant/10 shadow-[0_-4px_20px_rgba(0,255,148,0.15)] rounded-t-xl md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed" href="#">
+<span class="material-symbols-outlined" data-icon="child_care">child_care</span>
+<span class="font-label-sm text-label-sm uppercase mt-1">Primaria</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed" href="#">
+<span class="material-symbols-outlined" data-icon="directions_run">directions_run</span>
+<span class="font-label-sm text-label-sm uppercase mt-1">Media</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span class="font-label-sm text-label-sm uppercase mt-1">Proyectos</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed" href="#">
+<span class="material-symbols-outlined" data-icon="folder_special">folder_special</span>
+<span class="font-label-sm text-label-sm uppercase mt-1">Recursos</span>
+</a>
+</nav>
+<!-- FAB (Suppressed based on screen context for details, but shown here for primary action) -->
+<button class="fixed bottom-24 right-6 md:bottom-8 md:right-8 bg-primary-container text-on-primary-container p-4 rounded-full shadow-[0_0_20px_#00ff94] hover:scale-110 active:scale-95 transition-all z-40 group">
+<span class="material-symbols-outlined text-3xl" data-icon="add" data-weight="fill">add</span>
+<span class="absolute right-full mr-4 bg-surface-container px-3 py-1 rounded text-xs font-label-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">NUEVO PLAN</span>
+</button>
+<script>
+        // Simple Interaction logic
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mousedown', () => el.classList.add('scale-95'));
+            el.addEventListener('mouseup', () => el.classList.remove('scale-95'));
+            el.addEventListener('mouseleave', () => el.classList.remove('scale-95'));
+        });
+
+        // Dynamic Glass Effect on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('bg-surface-container-lowest/90');
+                header.classList.remove('bg-surface');
+            } else {
+                header.classList.remove('bg-surface-container-lowest/90');
+                header.classList.add('bg-surface');
+            }
+        });
+    </script>
+</body></html>

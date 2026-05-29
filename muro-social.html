@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Muro Social - Kinetic Nature</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Lexend:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#30353a",
+                        "error-container": "#93000a",
+                        "on-error": "#690005",
+                        "surface-container-low": "#171c20",
+                        "on-tertiary-container": "#a74400",
+                        "secondary": "#89ceff",
+                        "on-primary-fixed-variant": "#00522c",
+                        "secondary-fixed": "#c9e6ff",
+                        "on-secondary": "#00344d",
+                        "secondary-fixed-dim": "#89ceff",
+                        "surface-container-high": "#262b2f",
+                        "surface-variant": "#30353a",
+                        "primary-container": "#00ff94",
+                        "inverse-on-surface": "#2c3135",
+                        "outline-variant": "#3b4b3e",
+                        "on-tertiary-fixed-variant": "#7a3000",
+                        "surface-bright": "#353a3e",
+                        "tertiary-fixed-dim": "#ffb693",
+                        "tertiary": "#fffaff",
+                        "on-tertiary-fixed": "#351000",
+                        "surface-tint": "#00e383",
+                        "background": "#0f1418",
+                        "on-primary": "#00391d",
+                        "on-surface-variant": "#b9cbbb",
+                        "outline": "#849586",
+                        "on-tertiary": "#561f00",
+                        "tertiary-container": "#ffd7c6",
+                        "primary-fixed": "#5bffa1",
+                        "on-secondary-container": "#00344e",
+                        "surface": "#0f1418",
+                        "on-secondary-fixed-variant": "#004c6e",
+                        "on-error-container": "#ffdad6",
+                        "inverse-primary": "#006d3c",
+                        "on-secondary-fixed": "#001e2f",
+                        "primary": "#f2fff1",
+                        "on-surface": "#dfe3e9",
+                        "surface-container-lowest": "#0a0f13",
+                        "surface-container": "#1b2024",
+                        "inverse-surface": "#dfe3e9",
+                        "surface-dim": "#0f1418",
+                        "primary-fixed-dim": "#00e383",
+                        "on-background": "#dfe3e9",
+                        "on-primary-fixed": "#00210e",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#00a2e6",
+                        "tertiary-fixed": "#ffdbcc",
+                        "on-primary-container": "#00713f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "margin-mobile": "16px",
+                        "max-width": "1440px",
+                        "gutter": "24px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Anton"],
+                        "body-lg": ["Lexend"],
+                        "label-md": ["Lexend"],
+                        "label-sm": ["Lexend"],
+                        "headline-lg": ["Anton"],
+                        "body-md": ["Lexend"],
+                        "headline-md": ["Anton"],
+                        "display-xl": ["Anton"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["32px", {"lineHeight": "38px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["32px", {"lineHeight": "40px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                        "display-xl": ["80px", {"lineHeight": "88px", "letterSpacing": "0.02em", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0f1418;
+            color: #dfe3e9;
+            font-family: 'Lexend', sans-serif;
+        }
+        .glass-card {
+            background: rgba(23, 28, 32, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(59, 75, 62, 0.2);
+        }
+        .neon-glow {
+            text-shadow: 0 0 10px rgba(0, 255, 148, 0.4);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #171c20;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #00ff94;
+            border-radius: 10px;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full h-[64px] z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-outline-variant/10 shadow-[0_0_12px_rgba(0,255,148,0.1)] flex items-center justify-between px-margin-mobile md:px-margin-desktop">
+<div class="flex items-center gap-4">
+<img alt="Kinetic Nature Logo" class="h-10 w-10 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3zmrHKaO9WKEO-7An7DcDt0t00rA3SY5zg-9EWYSPkgl0S-wL-jc_W9nFM4-YuEUlluRSxdlZMAVPuFVW8RJXuATgHaosmxBePit8IzAoTF-27Wvbyv34PGKg7QsL_5tF7OhHWrPXJ4QLi-4Y7UggiMGajpQD7ObsfMvqL9Q-HyrI8b2jqAajonKtA0cn0T0TWyeDYA_HVBcDASmx0QLySV7iG1tNudxJnRd3hAI0xaGwjEl1LROxhIWB4XehCg4bx1YmMt81XFXG"/>
+<h1 class="font-headline-md text-headline-md text-primary-container tracking-tighter">KINETIC NATURE</h1>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="#">Library</a>
+<a class="text-on-surface-variant hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="#">Manuals</a>
+<a class="text-on-surface-variant hover:text-primary-fixed-dim transition-colors font-label-md text-label-md" href="#">News</a>
+<a class="text-primary-fixed-dim font-label-md text-label-md border-b-2 border-primary-container" href="#">Social</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:scale-105 transition-transform active:scale-95">notifications</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden border border-primary-container/30">
+<img class="w-full h-full object-cover" data-alt="A professional close-up portrait of a high-performance athlete with a determined expression. The lighting is dramatic and moody, with sharp neon green rim lights that emphasize the futuristic athletic aesthetic of the Kinetic Nature brand. The background is a dark, tech-infused gymnasium environment with subtle bokeh effects. The overall image has a high-contrast, premium sports photography feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiUjTrbIaNI5ipijjcxS6LetMaLnOLxjWY8j9HKXxOUzzaZjrXPuEa7eFNIgs9b4TkagR94VnxtZuYiHcWscWHB9nbRAuNFXLT9k6OOu0Yi8PKJSknX2jh7lWI4yUFrNvTAIEPLmI1HjPpYg_-g3sH8TwwC4orcaU7oZb0_Oi-QTdI8TR8IeZsvvVCg83mUZ5GJOQCQXvPwNBJOQqjbVDO9rMWKUWPn2XErI3_W1H7YUpOz9gxzb7AknSpoCBXJLwBHy294dKasUY3"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-margin-mobile md:px-margin-desktop max-w-screen-xl mx-auto">
+<!-- Bento Grid Header -->
+<div class="grid grid-cols-4 md:grid-cols-12 gap-gutter mb-12">
+<!-- Community Title Card -->
+<div class="col-span-4 md:col-span-8 glass-card p-6 rounded-xl flex flex-col justify-end min-h-[240px] relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10"></div>
+<div class="absolute inset-0 opacity-30 group-hover:scale-110 transition-transform duration-700 bg-cover bg-center" data-alt="A wide cinematic shot of an elite athletic training facility at night. The stadium is illuminated by intense neon green floodlights that cast long, dramatic shadows across the high-tech track surface. Professional athletes are captured in mid-motion, their bodies creating a sense of kinetic energy and raw power. The atmosphere is professional, urgent, and futuristic, perfectly aligned with the Cyber-Athletic visual style of the brand." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCwoaZ8E_CMapXDnRV7TY5x2mNcZGQycQlLz0crv33fj5s7N5KAOxIMQoDQESPCrOqCtW072y_fmdFRgbODV2Xh8mGl9vAkRcrgLa9p7rjXooKWWfzRttsPULJT0x-q2qiBQltPYQdJgeQC4Pe-XXuqA0sJSZwReQQe5af51DQDB_aAuHbTKh4jwp8-vyjGgsoy9YCV79ArIewGGSXg84moGsNl387KmxWGDC0BK7McXys-qp8v0nBV2nYGQYUF-m3SO5uNMkXH2x1D')">
+</div>
+<div class="relative z-20">
+<span class="text-primary-container font-label-md text-label-sm uppercase tracking-widest mb-2 block">Live Ecosystem</span>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary leading-tight mb-2">MURO SOCIAL <br/><span class="text-primary-container neon-glow">DE LA COMUNIDAD</span></h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">Donde los atletas de élite comparten victorias, datos de rendimiento y el sudor de cada jornada.</p>
+</div>
+</div>
+<!-- Profile Summary Card -->
+<div class="col-span-4 md:col-span-4 glass-card p-6 rounded-xl flex flex-col justify-between border-primary-container/20">
+<div class="flex items-start justify-between">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Tu Rango</p>
+<p class="font-headline-md text-headline-md text-primary-container">PRO MEMBER</p>
+</div>
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<div class="mt-4">
+<div class="flex justify-between mb-2">
+<span class="text-label-sm font-label-sm">Nivel 42</span>
+<span class="text-label-sm font-label-sm text-primary-container">85% para Nivel 43</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container shadow-[0_0_10px_#00ff94]" style="width: 85%"></div>
+</div>
+</div>
+<button class="mt-6 w-full py-3 bg-primary-container text-on-primary-container font-label-md text-label-md rounded-lg hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">add_box</span>
+                    NUEVA PUBLICACIÓN
+                </button>
+</div>
+</div>
+<div class="grid grid-cols-4 md:grid-cols-12 gap-gutter">
+<!-- Sidebar Activities (Desktop) -->
+<aside class="hidden md:block md:col-span-3 space-y-gutter">
+<div class="glass-card p-5 rounded-xl">
+<h3 class="font-label-md text-label-md text-primary mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container">trending_up</span>
+                        TENDENCIAS
+                    </h3>
+<ul class="space-y-4">
+<li>
+<p class="text-label-sm font-label-sm text-on-surface-variant">#MaratonKinetic</p>
+<p class="text-body-md text-body-md">1.2k Atletas</p>
+</li>
+<li>
+<p class="text-label-sm font-label-sm text-on-surface-variant">#BioHackingVzla</p>
+<p class="text-body-md text-body-md">840 Atletas</p>
+</li>
+<li>
+<p class="text-label-sm font-label-sm text-on-surface-variant">#FullCycleRecovery</p>
+<p class="text-body-md text-body-md">512 Atletas</p>
+</li>
+</ul>
+</div>
+<div class="glass-card p-5 rounded-xl border-dashed border-outline-variant">
+<h3 class="font-label-md text-label-md text-primary mb-4">LOGROS CERCANOS</h3>
+<div class="flex items-center gap-4 p-3 bg-surface-container-low rounded-lg border border-outline-variant/10">
+<span class="material-symbols-outlined text-secondary">sprint</span>
+<div>
+<p class="text-label-sm font-label-sm">Velocidad Punta</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">9.8m/s / 10m/s</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Social Feed -->
+<div class="col-span-4 md:col-span-6 space-y-gutter">
+<!-- Post 1 (Image Heavy) -->
+<article class="glass-card rounded-xl overflow-hidden">
+<div class="p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full border border-primary-container p-0.5">
+<img class="w-full h-full object-cover rounded-full" data-alt="A portrait of a female professional athlete with intense focus. She is wearing sleek, high-tech black athletic gear with glowing neon accents. The scene is shot in a high-contrast style with dark shadows and vibrant emerald green highlights that match the Kinetic Nature color palette. The background is a blurred laboratory setting with digital displays. Her skin is glistening with sweat, conveying raw athletic intensity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWNmLFgiLkrVO-bxV5aAJSUqFGMGqPAnRzmv62JWeI63HSj4xuwUF6GM8RZfJHbQHyymTrSa2h4fOJoQcU2iiPikr7fWAPIlaRuLeyZaQi5WQ3gmqN65yqmg3SFdLHpM1P0KvY8Bz05GmIw2hnTjhS6DZJAIB11thly0bagylwrZomNG_dP8eZYJVmVimFH-ZRczKLG60RhRaNXH64CgKQxp0E6P4jvHV0pI1Xg8ra3Do4Svp73m-qvrsi6M5gqe4bD_6QyTAOrJMr"/>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary">Isabella Rodriguez</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Hace 2 horas • Entrenamiento de Potencia</p>
+</div>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant">more_vert</button>
+</div>
+<div class="aspect-square relative group overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" data-alt="A high-speed action photograph of a cross-training athlete performing a heavy barbell lift. The gym is styled with futuristic aesthetics, featuring vertical neon light tubes in electric green and deep blue. Dynamic dust particles are frozen in the air by the flash. The lighting is aggressive and professional, emphasizing the muscular definition and the technical precision of the motion. The background is a dark, moody industrial athletic space." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeNwS_iVaRUXfDlzjy0nur0cEJ9eGW1ZgeZX_3dUn7v8LwC7Zh9lV-O-41XsfZOXSFLveVuo1hxLSIVW_45HmaVUgj68amNw6fK-jXwNjomAI9z9FzSIU_kfLzcgagYeAPk1Os_RHVD3zVd39oW-S_WUZEYmPgFn5QTGolTR8XeAAJDobPS-p6t_D72w84DEJTD52Z-ctsx1ov4cAPlGcYjXTIuQZxi-6y8hPFhpJ5AhWV48I0nwojsWLTy8jAeSY0krk1rBOj4s9Z"/>
+<div class="absolute bottom-4 left-4 flex gap-2">
+<span class="px-3 py-1 bg-primary-container/90 text-on-primary-container font-label-sm text-label-sm rounded-full backdrop-blur-md">180kg Deadlift</span>
+<span class="px-3 py-1 bg-surface-container-highest/90 text-on-surface font-label-sm text-label-sm rounded-full backdrop-blur-md">PR Alcanzado</span>
+</div>
+</div>
+<div class="p-4">
+<p class="font-body-md text-body-md text-on-surface mb-4">Finalmente superé mi marca personal hoy. Los datos de recuperación de Alex ayer fueron clave para modular la carga. ¡Seguimos! #KineticNature #HeavyDay</p>
+<div class="flex items-center gap-6 border-t border-outline-variant/10 pt-4">
+<button class="flex items-center gap-2 group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary-container transition-colors" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">124</span>
+</button>
+<button class="flex items-center gap-2 group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-secondary transition-colors">forum</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">18</span>
+</button>
+<button class="flex items-center gap-2 ml-auto group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary-container transition-colors">share</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Post 2 (Metric Focused) -->
+<article class="glass-card rounded-xl p-6">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest">
+<img class="w-full h-full object-cover rounded-full" data-alt="A portrait of a male professional athlete with a sharp, modern haircut and a focused gaze. He is wearing high-end tech-wear athletic apparel. The lighting consists of high-contrast key lights and a soft green glow from an unseen data panel reflecting in his eyes. The environment is a clean, minimalist laboratory-style training room. The aesthetic is elite, professional, and technologically advanced." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNwYrwjnxoc7lOS1dOU_3C424uxFkXTr8XIxQ4VepIh42fdSJho7MMSsUNawCxc9wTYMFBvSgoQLBazv4T1rdBRtf6YxOJjrL5XUiAtEIwENoNw6mNHp2C4HMF8Fy_EFrUFjWislxCtnw4GISGmFjBsfR90-Tv_B7Nd24iT7_N1xOyfwjKImhc_ACvHM_mWX21bA-o21VGdL1R6rR2lrk_xVnxPiKcOaPYqudb6y19sAp-SzbxNwnBT-Ff7WUmG7y47TR0fDige4w9"/>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary">Carlos Mendez</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Hace 4 horas • Logro Desbloqueado</p>
+</div>
+</div>
+<div class="bg-surface-container-low border border-primary-container/30 rounded-lg p-6 mb-4 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-2">
+<span class="material-symbols-outlined text-primary-container/20 text-6xl" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div class="relative z-10 flex flex-col md:flex-row gap-6 items-center">
+<div class="text-center md:text-left">
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase">Eficiencia Bio-Métrica</p>
+<p class="text-display-xl font-display-xl text-primary-container leading-none">94<span class="text-headline-md">%</span></p>
+</div>
+<div class="flex-1 space-y-3 w-full">
+<div class="flex justify-between items-end">
+<span class="text-label-sm font-label-sm">Recuperación Neural</span>
+<span class="text-label-sm font-label-sm text-primary-container">Superior</span>
+</div>
+<div class="h-1 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container shadow-[0_0_10px_#00ff94]" style="width: 94%"></div>
+</div>
+<p class="text-body-md text-body-md text-on-surface italic">"Rendimiento optimizado bajo condiciones de estrés nivel 4."</p>
+</div>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface mb-4">Semana de carga máxima completada con una eficiencia del 94%. El sistema Kinetic Nature me avisó exactamente cuándo hidratar para mantener estos niveles. ¡La data no miente!</p>
+<div class="flex items-center gap-6 border-t border-outline-variant/10 pt-4">
+<button class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant">favorite</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">89</span>
+</button>
+<button class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant">forum</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">5</span>
+</button>
+</div>
+</article>
+</div>
+<!-- Right Sidebar - Online Now (Desktop) -->
+<aside class="hidden md:block md:col-span-3 space-y-gutter">
+<div class="glass-card p-5 rounded-xl">
+<h3 class="font-label-md text-label-md text-primary mb-4">ATLETAS ACTIVOS</h3>
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="Portrait of an athlete." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDyK7RCj7_peNfDq_lmRDQa9w_Wym8y011TpdfRnNIeFcObbb3qfMJOoqnpwvr_FVROZmnuax9dHwO7SYP_15LBByAEpCDKLyarFotif5DM2u0yC3n6-cFiGWbN63WuP3rUrbc1yFVRfefj4Dvct3r4Xn8UgxFYxtG2aaeb2cvj0w2F2uBc5J-cZY9pWzT1IqQqCilBg6io0WygeguuIuU1clWrQkZCUO_VHc2sqsXbR6Nvp3gWI3SWyUC9EKumlM88YOLiOL-aXq3"/>
+</div>
+<div class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-primary-container rounded-full border-2 border-background"></div>
+</div>
+<span class="text-label-sm font-label-sm">Mateo Salas</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="Portrait of an athlete." src="https://lh3.googleusercontent.com/aida-public/AB6AXuArZLmUnT-Jh3hgjAPWzEdBCpexRU3w-bS_z-M5in203xyI1Zi-bk9wMT0EIZaj41dMFSOgMkgYIR1gy4Ba2xENw3oQuQZoFbETZPGTX5BzadELu8OifcEnHK5ob0Vzb4A83crg3jNqXXnc5ne5-0gBeQFHeTVg-6WdkcmtzBOhnmvx1GLjbgWkV7g8cq0yiVhFIA8nUQ_WQbu9yYsprsoTAXUTGH6AGGpna0xzPfexNDR3v-40OoR5HprGA8IUVhs6nEU-smS48AOH"/>
+</div>
+<div class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-primary-container rounded-full border-2 border-background"></div>
+</div>
+<span class="text-label-sm font-label-sm">Sofia Vega</span>
+</div>
+<div class="flex items-center gap-3 opacity-60">
+<div class="relative">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="Portrait of an athlete." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOi3q4E5EazvzGaXdnPAADmDNrhLmylenOHd_myPKG4nksr9AdsC2K4DmfiPu1EBfP_2TV1d1D2UcnWfF2oTGmoG9pmH14EGBhV5FHf0v5Xccq9tVcfbZDwqNU3Wld3zLoi-mKzXzsvpx9_F-5en6oecHs0H1Q4R4cCGYy7yIgDBeEiTDwKGMsJnR_dIuQ5RTPweF7TCfxf1K7ejZOOQhOHUtR_jfvxYyE8-tZrkx_QJHm3iGkL7XBQmNhUb_0iu5FtuwcxTsW5y8X"/>
+</div>
+</div>
+<span class="text-label-sm font-label-sm">Elena Paz</span>
+</div>
+</div>
+<button class="mt-4 text-primary-container font-label-sm text-label-sm hover:underline">Ver todos (128)</button>
+</div>
+<div class="bg-primary-container/10 p-5 rounded-xl border border-primary-container/20">
+<p class="text-label-sm font-label-sm text-primary-container uppercase mb-2">Sugerido por Alex</p>
+<p class="text-body-md text-body-md mb-4">"Isabella tiene una rutina de hombros que complementaría tu programa actual. ¿Quieres contactarla?"</p>
+<button class="text-on-primary-container bg-primary-container px-4 py-2 rounded-lg font-label-sm text-label-sm w-full">Conectar</button>
+</div>
+</aside>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-[80px] bg-surface-container-low/80 backdrop-blur-xl border-t border-outline-variant/20 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] z-50 flex justify-around items-center px-4 pb-2 rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant gap-1 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">sports_esports</span>
+<span class="font-label-sm text-label-sm">Library</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant gap-1 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-label-sm text-label-sm">Manuals</span>
+</a>
+<button class="relative -top-6 w-16 h-16 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(0,255,148,0.6)] active:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</button>
+<a class="flex flex-col items-center justify-center text-on-surface-variant gap-1 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">newspaper</span>
+<span class="font-label-sm text-label-sm">News</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary-container font-bold gap-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">forum</span>
+<span class="font-label-sm text-label-sm">Social</span>
+</a>
+</nav>
+<!-- FAB (Floating Action Button) - Modern Kinetic Variant -->
+<button class="fixed bottom-24 right-6 md:bottom-12 md:right-12 w-14 h-14 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(0,255,148,0.4)] z-40 hover:scale-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-2xl">add_photo_alternate</span>
+</button>
+<script>
+        // Micro-interaction for social feed cards
+        document.querySelectorAll('article').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.borderColor = 'rgba(0, 255, 148, 0.4)';
+                card.style.transform = 'translateY(-4px)';
+                card.style.transition = 'all 0.3s ease';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.borderColor = 'rgba(59, 75, 62, 0.2)';
+                card.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Simple like button interaction
+        document.querySelectorAll('.group .material-symbols-outlined[style*="FILL"]').forEach(btn => {
+            btn.parentElement.addEventListener('click', function() {
+                const countSpan = this.querySelector('span:last-child');
+                let count = parseInt(countSpan.innerText);
+                if (this.classList.contains('active-like')) {
+                    this.classList.remove('active-like');
+                    this.querySelector('.material-symbols-outlined').style.color = '#b9cbbb';
+                    countSpan.innerText = count - 1;
+                } else {
+                    this.classList.add('active-like');
+                    this.querySelector('.material-symbols-outlined').style.color = '#00ff94';
+                    countSpan.innerText = count + 1;
+                }
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Logros - EDUFISIC PRO</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Lexend:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-highest": "#30353a",
+                      "error-container": "#93000a",
+                      "on-error": "#690005",
+                      "surface-container-low": "#171c20",
+                      "on-tertiary-container": "#a74400",
+                      "secondary": "#89ceff",
+                      "on-primary-fixed-variant": "#00522c",
+                      "secondary-fixed": "#c9e6ff",
+                      "on-secondary": "#00344d",
+                      "secondary-fixed-dim": "#89ceff",
+                      "surface-container-high": "#262b2f",
+                      "surface-variant": "#30353a",
+                      "primary-container": "#00ff94",
+                      "inverse-on-surface": "#2c3135",
+                      "outline-variant": "#3b4b3e",
+                      "on-tertiary-fixed-variant": "#7a3000",
+                      "surface-bright": "#353a3e",
+                      "tertiary-fixed-dim": "#ffb693",
+                      "tertiary": "#fffaff",
+                      "on-tertiary-fixed": "#351000",
+                      "surface-tint": "#00e383",
+                      "background": "#0f1418",
+                      "on-primary": "#00391d",
+                      "on-surface-variant": "#b9cbbb",
+                      "outline": "#849586",
+                      "on-tertiary": "#561f00",
+                      "tertiary-container": "#ffd7c6",
+                      "primary-fixed": "#5bffa1",
+                      "on-secondary-container": "#00a2e6",
+                      "tertiary-fixed": "#ffdbcc",
+                      "on-primary-container": "#00713f",
+                      "surface": "#0f1418",
+                      "on-secondary-fixed-variant": "#004c6e",
+                      "on-error-container": "#ffdad6",
+                      "inverse-primary": "#006d3c",
+                      "on-secondary-fixed": "#001e2f",
+                      "primary": "#f2fff1",
+                      "on-surface": "#dfe3e9",
+                      "surface-container-lowest": "#0a0f13",
+                      "surface-container": "#1b2024",
+                      "inverse-surface": "#dfe3e9",
+                      "surface-dim": "#0f1418",
+                      "primary-fixed-dim": "#00e383",
+                      "on-background": "#dfe3e9",
+                      "on-primary-fixed": "#00210e",
+                      "error": "#ffb4ab",
+                      "secondary-container": "#00a2e6",
+                      "tertiary-fixed": "#ffdbcc",
+                      "on-primary-container": "#00713f"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-desktop": "64px",
+                      "margin-mobile": "16px",
+                      "max-width": "1440px",
+                      "gutter": "24px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": ["Anton"],
+                      "body-lg": ["Lexend"],
+                      "label-md": ["Lexend"],
+                      "label-sm": ["Lexend"],
+                      "headline-lg": ["Anton"],
+                      "body-md": ["Lexend"],
+                      "headline-md": ["Anton"],
+                      "display-xl": ["Anton"]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": ["32px", {"lineHeight": "38px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-md": ["32px", {"lineHeight": "40px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                      "display-xl": ["80px", {"lineHeight": "88px", "letterSpacing": "0.02em", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .kinetic-glow {
+            filter: drop-shadow(0 0 12px rgba(0, 255, 148, 0.4));
+        }
+        .bento-card {
+            background: linear-gradient(135deg, rgba(27, 32, 36, 0.8) 0%, rgba(23, 28, 32, 0.9) 100%);
+            border: 1px solid rgba(59, 75, 62, 0.2);
+            backdrop-blur: 10px;
+        }
+        .medal-shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        .medal-shimmer::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 4s infinite linear;
+        }
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full h-[64px] z-50 backdrop-blur-xl bg-surface/80 border-b border-outline-variant/20 flex justify-between items-center px-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-fixed-dim" data-icon="bolt">bolt</span>
+<span class="font-display-xl text-headline-md tracking-tighter text-primary-container">EDUFISIC PRO</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:scale-105 transition-transform duration-200 active:scale-95 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<img alt="User Profile" class="w-8 h-8 rounded-full border border-primary-container/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3zmrHKaO9WKEO-7An7DcDt0t00rA3SY5zg-9EWYSPkgl0S-wL-jc_W9nFM4-YuEUlluRSxdlZMAVPuFVW8RJXuATgHaosmxBePit8IzAoTF-27Wvbyv34PGKg7QsL_5tF7OhHWrPXJ4QLi-4Y7UggiMGajpQD7ObsfMvqL9Q-HyrI8b2jqAajonKtA0cn0T0TWyeDYA_HVBcDASmx0QLySV7iG1tNudxJnRd3hAI0xaGwjEl1LROxhIWB4XehCg4bx1YmMt81XFXG"/>
+</div>
+</header>
+<main class="pt-24 px-4 md:px-margin-desktop max-w-max-width mx-auto">
+<!-- Hero Section: User Identity & XP -->
+<section class="mb-12">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-8 bento-card p-6 rounded-xl flex flex-col md:flex-row items-center gap-8">
+<div class="relative">
+<div class="w-32 h-32 rounded-full border-4 border-primary-container flex items-center justify-center bg-surface-container-low overflow-hidden kinetic-glow">
+<img alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3zmrHKaO9WKEO-7An7DcDt0t00rA3SY5zg-9EWYSPkgl0S-wL-jc_W9nFM4-YuEUlluRSxdlZMAVPuFVW8RJXuATgHaosmxBePit8IzAoTF-27Wvbyv34PGKg7QsL_5tF7OhHWrPXJ4QLi-4Y7UggiMGajpQD7ObsfMvqL9Q-HyrI8b2jqAajonKtA0cn0T0TWyeDYA_HVBcDASmx0QLySV7iG1tNudxJnRd3hAI0xaGwjEl1LROxhIWB4XehCg4bx1YmMt81XFXG"/>
+</div>
+<div class="absolute -bottom-2 -right-2 bg-primary-container text-on-primary-container px-3 py-1 rounded-full font-label-sm text-label-sm">
+                            NIVEL 42
+                        </div>
+</div>
+<div class="flex-1 text-center md:text-left">
+<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-2">MAXIMUS PERFORMANCE</h1>
+<p class="text-on-surface-variant mb-4 font-body-lg">Rango: <span class="text-primary-fixed-dim font-bold">TITÁN OLÍMPICO</span></p>
+<div class="w-full bg-surface-container-highest h-4 rounded-full overflow-hidden mb-2">
+<div class="bg-primary-container h-full kinetic-glow" style="width: 78%;"></div>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">XP: 12,450</span>
+<span class="text-primary-fixed-dim">Próximo Rango: 15,000 XP</span>
+</div>
+</div>
+</div>
+<div class="md:col-span-4 grid grid-cols-2 gap-4">
+<div class="bento-card p-6 rounded-xl flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-primary-container text-4xl mb-2" data-icon="military_tech">military_tech</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant">MEDALLAS</p>
+<h3 class="font-headline-md text-headline-md">24</h3>
+</div>
+<div class="bento-card p-6 rounded-xl flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-secondary text-4xl mb-2" data-icon="workspace_premium">workspace_premium</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant">TOP %</p>
+<h3 class="font-headline-md text-headline-md">2.4%</h3>
+</div>
+</div>
+</div>
+</section>
+<!-- Medal Showcase Grid -->
+<section class="mb-12">
+<div class="flex items-center justify-between mb-8">
+<h2 class="font-headline-md text-headline-md flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container" data-icon="trophy">trophy</span>
+                    VITRINA DE MEDALLAS
+                </h2>
+<div class="flex gap-2">
+<button class="px-4 py-2 rounded-full border border-outline-variant text-label-sm font-label-sm bg-surface-container-low hover:bg-surface-container transition-colors">Todas</button>
+<button class="px-4 py-2 rounded-full border border-primary-container/30 text-label-sm font-label-sm bg-primary-container/10 text-primary-container">Legendarias</button>
+</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+<!-- Legendary Medal 1 -->
+<div class="flex flex-col items-center group cursor-pointer">
+<div class="w-32 h-32 mb-4 relative flex items-center justify-center rounded-full bg-surface-container p-4 group-hover:scale-110 transition-transform duration-300">
+<div class="absolute inset-0 bg-primary-container/10 rounded-full animate-pulse"></div>
+<div class="medal-shimmer w-full h-full rounded-full flex items-center justify-center bg-gradient-to-tr from-primary-container to-primary-fixed border-2 border-primary-container shadow-[0_0_20px_rgba(0,227,131,0.3)]">
+<span class="material-symbols-outlined text-on-primary-container text-5xl" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<h4 class="font-label-md text-label-md text-center text-on-surface mb-1">Fundador Elite</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Nivel Max</p>
+</div>
+<!-- Epic Medal 2 -->
+<div class="flex flex-col items-center group cursor-pointer">
+<div class="w-32 h-32 mb-4 relative flex items-center justify-center rounded-full bg-surface-container p-4 group-hover:scale-110 transition-transform duration-300">
+<div class="medal-shimmer w-full h-full rounded-full flex items-center justify-center bg-gradient-to-tr from-secondary to-on-secondary-container border-2 border-secondary shadow-[0_0_20px_rgba(137,206,255,0.3)]">
+<span class="material-symbols-outlined text-on-secondary text-5xl" data-icon="speed" style="font-variation-settings: 'FILL' 1;">speed</span>
+</div>
+</div>
+<h4 class="font-label-md text-label-md text-center text-on-surface mb-1">Velocidad Luz</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Nivel 15</p>
+</div>
+<!-- Rare Medal 3 -->
+<div class="flex flex-col items-center group cursor-pointer">
+<div class="w-32 h-32 mb-4 relative flex items-center justify-center rounded-full bg-surface-container p-4 group-hover:scale-110 transition-transform duration-300">
+<div class="medal-shimmer w-full h-full rounded-full flex items-center justify-center bg-gradient-to-tr from-tertiary-fixed-dim to-on-tertiary-container border-2 border-tertiary-fixed-dim">
+<span class="material-symbols-outlined text-on-tertiary text-5xl" data-icon="fitness_center" style="font-variation-settings: 'FILL' 1;">fitness_center</span>
+</div>
+</div>
+<h4 class="font-label-md text-label-md text-center text-on-surface mb-1">Fuerza Bruta</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Nivel 8</p>
+</div>
+<!-- Medal 4 (Locked) -->
+<div class="flex flex-col items-center opacity-40 grayscale">
+<div class="w-32 h-32 mb-4 flex items-center justify-center rounded-full bg-surface-container-highest border-2 border-dashed border-outline">
+<span class="material-symbols-outlined text-on-surface-variant text-5xl" data-icon="lock">lock</span>
+</div>
+<h4 class="font-label-md text-label-md text-center text-on-surface mb-1">Cero Gravedad</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Bloqueado</p>
+</div>
+<!-- Medal 5 -->
+<div class="flex flex-col items-center group cursor-pointer">
+<div class="w-32 h-32 mb-4 relative flex items-center justify-center rounded-full bg-surface-container p-4 group-hover:scale-110 transition-transform duration-300">
+<div class="medal-shimmer w-full h-full rounded-full flex items-center justify-center bg-gradient-to-tr from-primary-fixed-dim to-on-primary-fixed border-2 border-primary-fixed-dim">
+<span class="material-symbols-outlined text-on-primary-fixed text-5xl" data-icon="psychology" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+</div>
+<h4 class="font-label-md text-label-md text-center text-on-surface mb-1">Mente Maestra</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Nivel 5</p>
+</div>
+<!-- Medal 6 -->
+<div class="flex flex-col items-center group cursor-pointer">
+<div class="w-32 h-32 mb-4 relative flex items-center justify-center rounded-full bg-surface-container p-4 group-hover:scale-110 transition-transform duration-300">
+<div class="medal-shimmer w-full h-full rounded-full flex items-center justify-center bg-gradient-to-tr from-error to-error-container border-2 border-error">
+<span class="material-symbols-outlined text-on-error-container text-5xl" data-icon="local_fire_department" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+</div>
+<h4 class="font-label-md text-label-md text-center text-on-surface mb-1">Combustión</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Nivel 12</p>
+</div>
+</div>
+</section>
+<!-- Progress Roadmap -->
+<section class="mb-12">
+<h2 class="font-headline-md text-headline-md mb-8 flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="route">route</span>
+                RUTA HACIA LA ÉLITE
+            </h2>
+<div class="bento-card p-8 rounded-xl relative">
+<div class="absolute left-1/2 top-0 bottom-0 w-1 bg-outline-variant/30 hidden md:block -translate-x-1/2"></div>
+<div class="flex flex-col gap-12 relative">
+<!-- Step 1 -->
+<div class="flex flex-col md:flex-row items-center gap-8 md:text-right">
+<div class="flex-1 order-2 md:order-1">
+<h3 class="font-headline-md text-headline-md text-primary-container mb-2">Desafío Mercurio</h3>
+<p class="text-on-surface-variant">Completa 5 entrenamientos de alta intensidad en una semana. Desbloquea la medalla 'Rayos X'.</p>
+</div>
+<div class="z-10 w-12 h-12 rounded-full bg-primary-container flex items-center justify-center kinetic-glow order-1 md:order-2">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="check">check</span>
+</div>
+<div class="flex-1 order-3"></div>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col md:flex-row items-center gap-8">
+<div class="flex-1 hidden md:block"></div>
+<div class="z-10 w-12 h-12 rounded-full bg-primary-container flex items-center justify-center kinetic-glow">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="check">check</span>
+</div>
+<div class="flex-1">
+<h3 class="font-headline-md text-headline-md text-primary-container mb-2">Marea Roja</h3>
+<p class="text-on-surface-variant">Quema 10,000 calorías totales en modo AI Alex. Desbloquea el rango 'Guerrero'.</p>
+</div>
+</div>
+<!-- Step 3 (Current) -->
+<div class="flex flex-col md:flex-row items-center gap-8 md:text-right">
+<div class="flex-1 order-2 md:order-1">
+<h3 class="font-headline-md text-headline-md text-secondary mb-2">Proyecto Titán</h3>
+<p class="text-on-surface-variant">Alcanza el top 1% en la liga global de resistencia. En progreso (74%).</p>
+</div>
+<div class="z-10 w-16 h-16 rounded-full bg-background border-4 border-secondary flex items-center justify-center shadow-[0_0_15px_#89ceff] order-1 md:order-2">
+<span class="material-symbols-outlined text-secondary text-3xl animate-spin" data-icon="pending">pending</span>
+</div>
+<div class="flex-1 order-3"></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- FAB: AI Alex (Special Contextual Treatment) -->
+<div class="fixed bottom-24 right-6 z-50">
+<button class="w-16 h-16 rounded-full bg-primary-container text-on-primary-container shadow-[0_0_20px_rgba(0,255,148,0.6)] hover:scale-110 active:scale-90 transition-all flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl" data-icon="psychology">psychology</span>
+</button>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl backdrop-blur-xl bg-surface-container/80 border-t border-outline-variant/10 shadow-[0_-4px_20px_rgba(0,227,131,0.1)] flex justify-around items-end pb-4 pt-2 px-2">
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary-fixed transition-colors duration-200 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-label-sm text-label-sm">Library</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary-fixed transition-colors duration-200 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="dynamic_feed">dynamic_feed</span>
+<span class="font-label-sm text-label-sm">Feed</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary-fixed transition-colors duration-200 active:scale-90 relative -top-4 bg-surface-container rounded-full p-2 border-2 border-primary-container shadow-[0_0_15px_rgba(0,255,148,0.4)]" href="#">
+<span class="material-symbols-outlined text-primary-container text-3xl" data-icon="psychology">psychology</span>
+<span class="font-label-sm text-label-sm sr-only">AI Alex</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary-fixed transition-colors duration-200 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="monitor_heart">monitor_heart</span>
+<span class="font-label-sm text-label-sm">Health</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary-fixed-dim font-bold drop-shadow-[0_0_8px_rgba(0,227,131,0.6)]" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for medals
+        document.querySelectorAll('.group.cursor-pointer').forEach(medal => {
+            medal.addEventListener('click', () => {
+                const title = medal.querySelector('h4').textContent;
+                alert(`¡Medalla seleccionada: ${title}!\n\nRevisa tus estadísticas para ver cómo desbloqueaste este logro legendario.`);
+            });
+        });
+
+        // Dynamic XP counter animation
+        const xpText = document.querySelector('.text-on-surface-variant span.text-primary-fixed-dim');
+        if (xpText) {
+            let count = 12000;
+            const target = 12450;
+            const interval = setInterval(() => {
+                if (count < target) {
+                    count += 5;
+                    xpText.textContent = count.toLocaleString() + ' XP';
+                } else {
+                    clearInterval(interval);
+                }
+            }, 10);
+        }
+    </script>
+</body></html>

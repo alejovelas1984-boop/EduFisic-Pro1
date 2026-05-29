@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Chat IA - EduFisic Pro</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Lexend:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#30353a",
+                        "error-container": "#93000a",
+                        "on-error": "#690005",
+                        "surface-container-low": "#171c20",
+                        "on-tertiary-container": "#a74400",
+                        "secondary": "#89ceff",
+                        "on-primary-fixed-variant": "#00522c",
+                        "secondary-fixed": "#c9e6ff",
+                        "on-secondary": "#00344d",
+                        "secondary-fixed-dim": "#89ceff",
+                        "surface-container-high": "#262b2f",
+                        "surface-variant": "#30353a",
+                        "primary-container": "#00ff94",
+                        "inverse-on-surface": "#2c3135",
+                        "outline-variant": "#3b4b3e",
+                        "on-tertiary-fixed-variant": "#7a3000",
+                        "surface-bright": "#353a3e",
+                        "tertiary-fixed-dim": "#ffb693",
+                        "tertiary": "#fffaff",
+                        "on-tertiary-fixed": "#351000",
+                        "surface-tint": "#00e383",
+                        "background": "#0f1418",
+                        "on-primary": "#00391d",
+                        "on-surface-variant": "#b9cbbb",
+                        "outline": "#849586",
+                        "on-tertiary": "#561f00",
+                        "tertiary-container": "#ffd7c6",
+                        "primary-fixed": "#5bffa1",
+                        "on-secondary-container": "#00344e",
+                        "surface": "#0f1418",
+                        "on-secondary-fixed-variant": "#004c6e",
+                        "on-error-container": "#ffdad6",
+                        "inverse-primary": "#006d3c",
+                        "on-secondary-fixed": "#001e2f",
+                        "primary": "#f2fff1",
+                        "on-surface": "#dfe3e9",
+                        "surface-container-lowest": "#0a0f13",
+                        "surface-container": "#1b2024",
+                        "inverse-surface": "#dfe3e9",
+                        "surface-dim": "#0f1418",
+                        "primary-fixed-dim": "#00e383",
+                        "on-background": "#dfe3e9",
+                        "on-primary-fixed": "#00210e",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#00a2e6",
+                        "tertiary-fixed": "#ffdbcc",
+                        "on-primary-container": "#00713f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "margin-mobile": "16px",
+                        "max-width": "1440px",
+                        "gutter": "24px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Anton"],
+                        "body-lg": ["Lexend"],
+                        "label-md": ["Lexend"],
+                        "label-sm": ["Lexend"],
+                        "headline-lg": ["Anton"],
+                        "body-md": ["Lexend"],
+                        "headline-md": ["Anton"],
+                        "display-xl": ["Anton"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["32px", {"lineHeight": "38px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["32px", {"lineHeight": "40px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                        "display-xl": ["80px", {"lineHeight": "88px", "letterSpacing": "0.02em", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(23, 28, 32, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(185, 203, 187, 0.1);
+        }
+        .ai-bubble {
+            background: linear-gradient(135deg, rgba(27, 32, 36, 0.9) 0%, rgba(48, 53, 58, 0.9) 100%);
+            border-left: 3px solid #00ff94;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .user-bubble {
+            background: #00713f;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 113, 63, 0.2);
+        }
+        .kinetic-glow {
+            filter: drop-shadow(0 0 8px rgba(0, 255, 148, 0.4));
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .message-container {
+            height: calc(100vh - 180px);
+        }
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+        .active-pulse {
+            animation: pulse-glow 2s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 bg-surface/80 dark:bg-surface/80 backdrop-blur-md border-b border-white/10">
+<div class="flex items-center gap-3">
+<img alt="EduFisic Pro Logo" class="w-8 h-8 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3zmrHKaO9WKEO-7An7DcDt0t00rA3SY5zg-9EWYSPkgl0S-wL-jc_W9nFM4-YuEUlluRSxdlZMAVPuFVW8RJXuATgHaosmxBePit8IzAoTF-27Wvbyv34PGKg7QsL_5tF7OhHWrPXJ4QLi-4Y7UggiMGajpQD7ObsfMvqL9Q-HyrI8b2jqAajonKtA0cn0T0TWyeDYA_HVBcDASmx0QLySV7iG1tNudxJnRd3hAI0xaGwjEl1LROxhIWB4XehCg4bx1YmMt81XFXG"/>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface dark:text-on-surface tracking-tight">EduFisic Pro</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex gap-6 items-center mr-8">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:bg-white/5 transition-colors px-3 py-1 rounded-lg font-label-md" href="#">Entrenamientos</a>
+<a class="text-electric-blue dark:text-primary hover:bg-white/5 transition-colors px-3 py-1 rounded-lg font-label-md" href="#">Chat IA</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:bg-white/5 transition-colors px-3 py-1 rounded-lg font-label-md" href="#">Comunidad</a>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant dark:text-on-surface-variant hover:bg-white/5 transition-colors p-2 rounded-full">notifications</button>
+<div class="w-10 h-10 rounded-full border-2 border-primary-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close-up portrait of a determined professional athlete with sweat on their brow, dramatic high-contrast lighting from the side, dark atmospheric gym background, athletic photography style with deep shadows and sharp highlights, cinematically moody and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3_oywPibwQccaFqxD0MGVU3zy9t3tbJ7E1J7kVaiCd_7oO2EZjWbgm1TOq1_VIbUk2yVkCBuLXCzcM7As8drlOjQplMninvn1GKW8xa-u3WEzknQ95lgWkXZZ7AQT3F71xZQdDcFSyBvYjXr0V3jT26Oxt9W6jWxb2Vi48zs8SOgDAGmDB5OkSnmg1rS6z2VLAoKKIz_wNU_lb3hh1yxoH7uKm7-YEEiMDhD0LT0g9RYfrDNEBkFbh4xWw3lGGJpOXcv25DPnt5yn"/>
+</div>
+</div>
+</header>
+<!-- Main Content: Chat Interface -->
+<main class="pt-20 pb-24 md:pb-8 px-4 md:px-margin-desktop max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Sidebar: AI Status (Visible on Tablet/Desktop) -->
+<aside class="hidden lg:block lg:col-span-3 space-y-6">
+<div class="glass-panel p-6 rounded-xl border border-outline-variant/20 flex flex-col items-center text-center">
+<div class="relative mb-4">
+<div class="absolute inset-0 bg-primary-container/20 rounded-full blur-xl active-pulse"></div>
+<img alt="Alex IA Avatar" class="relative w-32 h-32 rounded-full border-2 border-primary-container object-cover z-10" src="https://lh3.googleusercontent.com/aida/ADBb0uiiPhlS0bqixSiEq3PkAj25MU9GfHPGqZOw6BnIdypP3ZR490A3wsWCpOZ3EhJ0vIRGF946RCvebonfQZYtAjFGFusNmijFc7wwuOWKFNwivvBPSSCe7Udk9At-RcKF5iF6M0ReHheCmvZWvdQr1rWj3NNAM93fns6Q7D5HyNQDu4FTS6_tWcoB-onAozoJgURRz9uGykkVMTkrfR86fa4wJgdg7AQnimGcX-chiUQZTaCezDj1KumtjNpO"/>
+<div class="absolute bottom-1 right-2 w-6 h-6 bg-primary-container rounded-full border-4 border-background z-20"></div>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-1">Alex IA</h2>
+<p class="text-primary font-label-md mb-4 uppercase tracking-widest">Optimización Elite</p>
+<div class="w-full space-y-3 pt-4 border-t border-outline-variant/10 text-left">
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant text-label-sm">Estado</span>
+<span class="text-primary-container text-label-sm font-bold">Analizando Biometría</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant text-label-sm">Sesión</span>
+<span class="text-on-surface text-label-sm">Post-Entreno</span>
+</div>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-xl border border-outline-variant/20">
+<h3 class="font-label-md text-on-surface-variant mb-4 uppercase">Sugerencias</h3>
+<div class="space-y-2">
+<button class="w-full text-left p-3 rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors text-label-md flex items-center gap-2 group">
+<span class="material-symbols-outlined text-primary-container text-sm">bolt</span>
+                        Optimizar recuperación
+                    </button>
+<button class="w-full text-left p-3 rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors text-label-md flex items-center gap-2 group">
+<span class="material-symbols-outlined text-primary-container text-sm">nutrition</span>
+                        Plan macro nutricional
+                    </button>
+<button class="w-full text-left p-3 rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors text-label-md flex items-center gap-2 group">
+<span class="material-symbols-outlined text-primary-container text-sm">show_chart</span>
+                        Análisis de fatiga
+                    </button>
+</div>
+</div>
+</aside>
+<!-- Chat Canvas -->
+<section class="lg:col-span-9 h-[calc(100vh-10rem)] flex flex-col glass-panel rounded-2xl overflow-hidden border border-outline-variant/20">
+<!-- Chat Header (Mobile view focus) -->
+<div class="lg:hidden p-4 border-b border-outline-variant/10 flex items-center gap-3">
+<img class="w-10 h-10 rounded-full border border-primary-container object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0uiiPhlS0bqixSiEq3PkAj25MU9GfHPGqZOw6BnIdypP3ZR490A3wsWCpOZ3EhJ0vIRGF946RCvebonfQZYtAjFGFusNmijFc7wwuOWKFNwivvBPSSCe7Udk9At-RcKF5iF6M0ReHheCmvZWvdQr1rWj3NNAM93fns6Q7D5HyNQDu4FTS6_tWcoB-onAozoJgURRz9uGykkVMTkrfR86fa4wJgdg7AQnimGcX-chiUQZTaCezDj1KumtjNpO"/>
+<div>
+<h2 class="font-label-md text-on-surface">Alex IA</h2>
+<p class="text-[10px] text-primary-container uppercase tracking-tighter">En línea - Consultor Pro</p>
+</div>
+</div>
+<!-- Messages Area -->
+<div class="flex-1 overflow-y-auto p-4 md:p-8 space-y-6 scrollbar-hide" id="chat-window">
+<!-- AI Welcome Message -->
+<div class="flex items-start gap-3 max-w-[85%]">
+<div class="hidden md:block w-8 h-8 rounded-full border border-primary-container overflow-hidden shrink-0 mt-1">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0uiiPhlS0bqixSiEq3PkAj25MU9GfHPGqZOw6BnIdypP3ZR490A3wsWCpOZ3EhJ0vIRGF946RCvebonfQZYtAjFGFusNmijFc7wwuOWKFNwivvBPSSCe7Udk9At-RcKF5iF6M0ReHheCmvZWvdQr1rWj3NNAM93fns6Q7D5HyNQDu4FTS6_tWcoB-onAozoJgURRz9uGykkVMTkrfR86fa4wJgdg7AQnimGcX-chiUQZTaCezDj1KumtjNpO"/>
+</div>
+<div class="ai-bubble p-4 rounded-2xl rounded-tl-none">
+<p class="font-body-md text-on-surface">Hola, campeón. He analizado tus datos de la sesión de hoy. Tu frecuencia cardíaca alcanzó un pico de 178 BPM durante los intervalos de sprint. Tu recuperación fue un 12% más rápida que la semana pasada. ¿Quieres que ajustemos la carga para mañana o prefieres enfocarte en movilidad?</p>
+<span class="text-[10px] text-on-surface-variant mt-2 block">14:20</span>
+</div>
+</div>
+<!-- User Message -->
+<div class="flex items-start gap-3 justify-end ml-auto max-w-[85%]">
+<div class="user-bubble p-4 rounded-2xl rounded-tr-none">
+<p class="font-body-md">Me siento un poco cargado en los isquiotibiales. ¿Qué me recomiendas para evitar lesiones?</p>
+<span class="text-[10px] text-white/60 mt-2 block text-right">14:22</span>
+</div>
+<div class="hidden md:block w-8 h-8 rounded-full border border-secondary overflow-hidden shrink-0 mt-1">
+<img class="w-full h-full object-cover" data-alt="Professional athlete profile photo." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbRvKCxQ02ykOqd3hGc_FTpkxDzI1f9i4EXcXVOai9tCnDWOmhZZF1jjCGNFyDgp-Fk8fRy25C38w3Z9_2Oy3UDeFY2PK36bFyCAlNAJboLk6mDQFpLinPG3_eiIPFM7R5gelWt5pOQj6tQZRlgkfmJUobHVk5618RCxsdYrMmNdsMUI_vCKNIvnzpRSqd_SVo6CQct9Pfd8zwGnvpQ6GyNkD_FwNvX29b_CmDHN3YLuI0l-WAWqCSd4ND-90zxMhFDvNU2m05nnS_"/>
+</div>
+</div>
+<!-- AI Typing/Thinking state (Mocked) -->
+<div class="flex items-start gap-3 max-w-[85%]">
+<div class="hidden md:block w-8 h-8 rounded-full border border-primary-container overflow-hidden shrink-0 mt-1">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0uiiPhlS0bqixSiEq3PkAj25MU9GfHPGqZOw6BnIdypP3ZR490A3wsWCpOZ3EhJ0vIRGF946RCvebonfQZYtAjFGFusNmijFc7wwuOWKFNwivvBPSSCe7Udk9At-RcKF5iF6M0ReHheCmvZWvdQr1rWj3NNAM93fns6Q7D5HyNQDu4FTS6_tWcoB-onAozoJgURRz9uGykkVMTkrfR86fa4wJgdg7AQnimGcX-chiUQZTaCezDj1KumtjNpO"/>
+</div>
+<div class="ai-bubble p-4 rounded-2xl rounded-tl-none flex items-center gap-1">
+<div class="w-1.5 h-1.5 bg-primary-container rounded-full active-pulse"></div>
+<div class="w-1.5 h-1.5 bg-primary-container rounded-full active-pulse" style="animation-delay: 0.2s"></div>
+<div class="w-1.5 h-1.5 bg-primary-container rounded-full active-pulse" style="animation-delay: 0.4s"></div>
+</div>
+</div>
+</div>
+<!-- Input Area -->
+<div class="p-4 md:p-6 bg-surface-container-low border-t border-outline-variant/10">
+<form class="relative flex items-center gap-3" id="chat-form">
+<div class="flex-1 relative">
+<input class="w-full bg-surface-container-highest border-none rounded-xl py-4 pl-4 pr-12 text-on-surface focus:ring-1 focus:ring-primary-container placeholder:text-on-surface-variant/50" placeholder="Escribe tu consulta de rendimiento..." type="text"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant hover:text-primary-container transition-colors" type="button">mic</button>
+</div>
+<button class="bg-primary-container text-on-primary-container w-14 h-14 rounded-xl flex items-center justify-center kinetic-glow hover:scale-105 active:scale-95 duration-150 shrink-0" type="submit">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</form>
+<div class="flex gap-2 mt-4 overflow-x-auto scrollbar-hide pb-2">
+<button class="whitespace-nowrap px-4 py-1.5 rounded-full border border-outline-variant/30 text-label-sm text-on-surface-variant hover:border-primary-container hover:text-primary-container transition-all">Rutina estiramiento</button>
+<button class="whitespace-nowrap px-4 py-1.5 rounded-full border border-outline-variant/30 text-label-sm text-on-surface-variant hover:border-primary-container hover:text-primary-container transition-all">Análisis de sueño</button>
+<button class="whitespace-nowrap px-4 py-1.5 rounded-full border border-outline-variant/30 text-label-sm text-on-surface-variant hover:border-primary-container hover:text-primary-container transition-all">Suplementación</button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-safe h-16 bg-surface/80 dark:bg-surface/80 backdrop-blur-md border-t border-white/10 rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant opacity-70 hover:opacity-100 transition-opacity" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant opacity-70 hover:opacity-100 transition-opacity" href="#">
+<span class="material-symbols-outlined">newspaper</span>
+<span class="font-label-sm text-label-sm">Noticias</span>
+</a>
+<div class="relative -top-4">
+<a class="flex flex-col items-center justify-center text-electric-blue dark:text-primary font-bold bg-surface-container p-3 rounded-full kinetic-glow border border-primary-container/30" href="#">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</a>
+</div>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant opacity-70 hover:opacity-100 transition-opacity" href="#">
+<span class="material-symbols-outlined">emoji_events</span>
+<span class="font-label-sm text-label-sm">Logros</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant opacity-70 hover:opacity-100 transition-opacity" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Social</span>
+</a>
+</nav>
+<script>
+        // Simple chat interaction demo
+        const chatForm = document.getElementById('chat-form');
+        const chatWindow = document.getElementById('chat-window');
+
+        chatForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const input = chatForm.querySelector('input');
+            const message = input.value.trim();
+            
+            if (message) {
+                // Add User Bubble
+                const userDiv = document.createElement('div');
+                userDiv.className = 'flex items-start gap-3 justify-end ml-auto max-w-[85%] animate-in fade-in slide-in-from-right duration-300';
+                userDiv.innerHTML = `
+                    <div class="user-bubble p-4 rounded-2xl rounded-tr-none">
+                        <p class="font-body-md">${message}</p>
+                        <span class="text-[10px] text-white/60 mt-2 block text-right">${new Date().getHours()}:${new Date().getMinutes()}</span>
+                    </div>
+                `;
+                chatWindow.appendChild(userDiv);
+                input.value = '';
+                chatWindow.scrollTo({ top: chatWindow.scrollHeight, behavior: 'smooth' });
+
+                // Simulate AI typing after a delay
+                setTimeout(() => {
+                    const aiTyping = document.createElement('div');
+                    aiTyping.className = 'flex items-start gap-3 max-w-[85%] animate-in fade-in duration-300';
+                    aiTyping.innerHTML = `
+                        <div class="hidden md:block w-8 h-8 rounded-full border border-primary-container overflow-hidden shrink-0 mt-1">
+                            <img src="https://lh3.googleusercontent.com/aida/ADBb0uiiPhlS0bqixSiEq3PkAj25MU9GfHPGqZOw6BnIdypP3ZR490A3wsWCpOZ3EhJ0vIRGF946RCvebonfQZYtAjFGFusNmijFc7wwuOWKFNwivvBPSSCe7Udk9At-RcKF5iF6M0ReHheCmvZWvdQr1rWj3NNAM93fns6Q7D5HyNQDu4FTS6_tWcoB-onAozoJgURRz9uGykkVMTkrfR86fa4wJgdg7AQnimGcX-chiUQZTaCezDj1KumtjNpO" class="w-full h-full object-cover">
+                        </div>
+                        <div class="ai-bubble p-4 rounded-2xl rounded-tl-none flex items-center gap-1">
+                            <div class="w-1.5 h-1.5 bg-primary-container rounded-full active-pulse"></div>
+                            <div class="w-1.5 h-1.5 bg-primary-container rounded-full active-pulse" style="animation-delay: 0.2s"></div>
+                            <div class="w-1.5 h-1.5 bg-primary-container rounded-full active-pulse" style="animation-delay: 0.4s"></div>
+                        </div>
+                    `;
+                    chatWindow.appendChild(aiTyping);
+                    chatWindow.scrollTo({ top: chatWindow.scrollHeight, behavior: 'smooth' });
+                    
+                    // Replace typing with actual message
+                    setTimeout(() => {
+                        aiTyping.remove();
+                        const aiMsg = document.createElement('div');
+                        aiMsg.className = 'flex items-start gap-3 max-w-[85%] animate-in zoom-in duration-300';
+                        aiMsg.innerHTML = `
+                            <div class="hidden md:block w-8 h-8 rounded-full border border-primary-container overflow-hidden shrink-0 mt-1">
+                                <img src="https://lh3.googleusercontent.com/aida/ADBb0uiiPhlS0bqixSiEq3PkAj25MU9GfHPGqZOw6BnIdypP3ZR490A3wsWCpOZ3EhJ0vIRGF946RCvebonfQZYtAjFGFusNmijFc7wwuOWKFNwivvBPSSCe7Udk9At-RcKF5iF6M0ReHheCmvZWvdQr1rWj3NNAM93fns6Q7D5HyNQDu4FTS6_tWcoB-onAozoJgURRz9uGykkVMTkrfR86fa4wJgdg7AQnimGcX-chiUQZTaCezDj1KumtjNpO" class="w-full h-full object-cover">
+                            </div>
+                            <div class="ai-bubble p-4 rounded-2xl rounded-tl-none">
+                                <p class="font-body-md text-on-surface">Excelente pregunta. Basado en tu historial, te recomiendo una sesión de 15 minutos de estiramiento dinámico seguido de compresión. He enviado una rutina sugerida a tu sección de 'Entrenamientos'. ¿Algo más en lo que pueda ayudarte?</p>
+                                <span class="text-[10px] text-on-surface-variant mt-2 block">${new Date().getHours()}:${new Date().getMinutes()}</span>
+                            </div>
+                        `;
+                        chatWindow.appendChild(aiMsg);
+                        chatWindow.scrollTo({ top: chatWindow.scrollHeight, behavior: 'smooth' });
+                    }, 2000);
+                }, 1000);
+            }
+        });
+    </script>
+</body></html>

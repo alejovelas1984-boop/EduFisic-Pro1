@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Lexend:wght@300;400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Anton:wght@100..900&amp;family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Lexend', sans-serif;
+            background-color: #0f1418;
+            color: #dfe3e9;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .bento-card {
+            background: rgba(23, 28, 32, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(59, 75, 62, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .bento-card:hover {
+            border-color: rgba(0, 255, 148, 0.3);
+            background: rgba(23, 28, 32, 0.9);
+        }
+        .kinetic-glow {
+            filter: drop-shadow(0 0 8px rgba(0, 255, 148, 0.4));
+        }
+        .progress-glow {
+            box-shadow: 0 0 15px rgba(0, 255, 148, 0.5);
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(.8); opacity: 0.5; }
+            100% { transform: scale(1.2); opacity: 0; }
+        }
+        .timer-pulse::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #00ff94;
+            z-index: -1;
+            animation: pulse-ring 2s infinite;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-highest": "#30353a",
+                        "error-container": "#93000a",
+                        "on-error": "#690005",
+                        "surface-container-low": "#171c20",
+                        "on-tertiary-container": "#a74400",
+                        "secondary": "#89ceff",
+                        "on-primary-fixed-variant": "#00522c",
+                        "secondary-fixed": "#c9e6ff",
+                        "on-secondary": "#00344d",
+                        "secondary-fixed-dim": "#89ceff",
+                        "surface-container-high": "#262b2f",
+                        "surface-variant": "#30353a",
+                        "primary-container": "#00ff94",
+                        "inverse-on-surface": "#2c3135",
+                        "outline-variant": "#3b4b3e",
+                        "on-tertiary-fixed-variant": "#7a3000",
+                        "surface-bright": "#353a3e",
+                        "tertiary-fixed-dim": "#ffb693",
+                        "tertiary": "#fffaff",
+                        "on-tertiary-fixed": "#351000",
+                        "surface-tint": "#00e383",
+                        "background": "#0f1418",
+                        "on-primary": "#00391d",
+                        "on-surface-variant": "#b9cbbb",
+                        "outline": "#849586",
+                        "on-tertiary": "#561f00",
+                        "tertiary-container": "#ffd7c6",
+                        "primary-fixed": "#5bffa1",
+                        "on-secondary-container": "#00344e",
+                        "surface": "#0f1418",
+                        "on-secondary-fixed-variant": "#004c6e",
+                        "on-error-container": "#ffdad6",
+                        "inverse-primary": "#006d3c",
+                        "on-secondary-fixed": "#001e2f",
+                        "primary": "#f2fff1",
+                        "on-surface": "#dfe3e9",
+                        "surface-container-lowest": "#0a0f13",
+                        "surface-container": "#1b2024",
+                        "inverse-surface": "#dfe3e9",
+                        "surface-dim": "#0f1418",
+                        "primary-fixed-dim": "#00e383",
+                        "on-background": "#dfe3e9",
+                        "on-primary-fixed": "#00210e",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#00a2e6",
+                        "tertiary-fixed": "#ffdbcc",
+                        "on-primary-container": "#00713f"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        "headline-lg": ["Anton"],
+                        "headline-md": ["Anton"],
+                        "body-lg": ["Lexend"],
+                        "body-md": ["Lexend"],
+                        "label-sm": ["Lexend"]
+                    },
+                    fontSize: {
+                        "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "0.02em"}],
+                        "headline-md": ["32px", {"lineHeight": "40px", "letterSpacing": "0.01em"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "38px", "letterSpacing": "0.02em"}],
+                        "body-lg": ["18px", {"lineHeight": "28px"}],
+                        "body-md": ["16px", {"lineHeight": "24px"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface min-h-screen pb-24">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-outline-variant/10 shadow-sm">
+<div class="flex justify-between items-center px-4 h-16 w-full max-w-[1440px] mx-auto">
+<div class="flex items-center gap-3">
+<button class="p-2 text-on-surface-variant hover:bg-surface-variant/50 transition-colors rounded-full active:scale-95">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex items-center gap-2">
+<img alt="Logo" class="w-8 h-8 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3zmrHKaO9WKEO-7An7DcDt0t00rA3SY5zg-9EWYSPkgl0S-wL-jc_W9nFM4-YuEUlluRSxdlZMAVPuFVW8RJXuATgHaosmxBePit8IzAoTF-27Wvbyv34PGKg7QsL_5tF7OhHWrPXJ4QLi-4Y7UggiMGajpQD7ObsfMvqL9Q-HyrI8b2jqAajonKtA0cn0T0TWyeDYA_HVBcDASmx0QLySV7iG1tNudxJnRd3hAI0xaGwjEl1LROxhIWB4XehCg4bx1YmMt81XFXG"/>
+<h1 class="font-headline-md text-headline-md text-primary-fixed-dim tracking-tighter hidden md:block">EDUFISIC PRO</h1>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Time Remaining</span>
+<span class="font-headline-md text-primary-fixed-dim tabular-nums" id="timer">14:52</span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 px-4 md:px-margin-desktop max-w-[1440px] mx-auto">
+<!-- Assessment Header & Progress -->
+<div class="mb-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="md:col-span-2">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-2">FISIOLOGÍA DEL ESFUERZO II</h2>
+<p class="font-body-md text-on-surface-variant max-w-2xl">Módulo de Resistencia Aeróbica: Evaluación de umbral de lactato y VO2 Máximo teórico. Responde con precisión técnica.</p>
+</div>
+<div class="flex flex-col justify-center bg-surface-container-low p-6 rounded-xl border border-outline-variant/20">
+<div class="flex justify-between mb-2">
+<span class="font-label-sm text-on-surface-variant uppercase">Progress</span>
+<span class="font-label-sm text-primary">60% Complete</span>
+</div>
+<div class="w-full bg-surface-container-highest h-3 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full w-[60%] progress-glow"></div>
+</div>
+<div class="mt-2 text-right">
+<span class="font-label-sm text-on-surface-variant italic">Question 3 of 5</span>
+</div>
+</div>
+</div>
+<!-- Bento Layout for Question -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- Question Content Card -->
+<div class="lg:col-span-8 bento-card p-6 md:p-8 rounded-xl min-h-[400px] flex flex-col">
+<div class="flex items-center gap-2 mb-6">
+<span class="bg-primary-container/10 text-primary-fixed-dim px-3 py-1 rounded-full text-xs font-bold border border-primary-container/20">MULTIPLE CHOICE</span>
+<span class="text-on-surface-variant font-label-sm">High Difficulty</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-8 leading-tight">
+                    ¿Cuál de los siguientes mecanismos fisiológicos es el principal responsable de la compensación respiratoria durante un ejercicio de intensidad creciente por encima del umbral anaeróbico?
+                </h3>
+<div class="space-y-4 flex-grow">
+<!-- Option A -->
+<label class="group relative flex items-center p-4 rounded-lg border border-outline-variant/30 hover:border-primary-container/50 bg-surface-container-highest/20 cursor-pointer transition-all active:scale-[0.99]">
+<input class="hidden peer" name="assessment" type="radio"/>
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant peer-checked:border-primary-container peer-checked:bg-primary-container flex items-center justify-center transition-all">
+<div class="w-2 h-2 rounded-full bg-on-primary-container opacity-0 peer-checked:opacity-100"></div>
+</div>
+<span class="ml-4 font-body-md text-on-surface">Aumento de la presión parcial de CO2 (PaCO2) arterial.</span>
+<div class="absolute inset-0 rounded-lg bg-primary-container/5 opacity-0 group-hover:opacity-100 pointer-events-none"></div>
+</label>
+<!-- Option B (Selected State Example) -->
+<label class="group relative flex items-center p-4 rounded-lg border border-primary-container/60 bg-primary-container/10 cursor-pointer transition-all active:scale-[0.99]">
+<input checked="" class="hidden peer" name="assessment" type="radio"/>
+<div class="w-6 h-6 rounded-full border-2 border-primary-container bg-primary-container flex items-center justify-center transition-all">
+<div class="w-2 h-2 rounded-full bg-on-primary-container"></div>
+</div>
+<span class="ml-4 font-body-md text-primary">Estimulación de quimiorreceptores periféricos por el descenso del pH sanguíneo.</span>
+</label>
+<!-- Option C -->
+<label class="group relative flex items-center p-4 rounded-lg border border-outline-variant/30 hover:border-primary-container/50 bg-surface-container-highest/20 cursor-pointer transition-all active:scale-[0.99]">
+<input class="hidden peer" name="assessment" type="radio"/>
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant peer-checked:border-primary-container peer-checked:bg-primary-container flex items-center justify-center transition-all">
+<div class="w-2 h-2 rounded-full bg-on-primary-container opacity-0 peer-checked:opacity-100"></div>
+</div>
+<span class="ml-4 font-body-md text-on-surface">Descenso de la ventilación minuto para conservar la reserva de glucógeno.</span>
+<div class="absolute inset-0 rounded-lg bg-primary-container/5 opacity-0 group-hover:opacity-100 pointer-events-none"></div>
+</label>
+<!-- Option D -->
+<label class="group relative flex items-center p-4 rounded-lg border border-outline-variant/30 hover:border-primary-container/50 bg-surface-container-highest/20 cursor-pointer transition-all active:scale-[0.99]">
+<input class="hidden peer" name="assessment" type="radio"/>
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant peer-checked:border-primary-container peer-checked:bg-primary-container flex items-center justify-center transition-all">
+<div class="w-2 h-2 rounded-full bg-on-primary-container opacity-0 peer-checked:opacity-100"></div>
+</div>
+<span class="ml-4 font-body-md text-on-surface">Reducción drástica del transporte de O2 por la hemoglobina saturada.</span>
+<div class="absolute inset-0 rounded-lg bg-primary-container/5 opacity-0 group-hover:opacity-100 pointer-events-none"></div>
+</label>
+</div>
+<div class="mt-8 flex justify-between items-center">
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors font-label-sm uppercase tracking-wider">
+<span class="material-symbols-outlined">navigate_before</span>
+                        Previous
+                    </button>
+<button class="bg-primary-container text-on-primary-container px-8 py-3 rounded-full font-headline-md text-[18px] uppercase tracking-widest kinetic-glow hover:scale-105 active:scale-95 transition-all">
+                        Next Question
+                    </button>
+</div>
+</div>
+<!-- Supporting Data Bento Column -->
+<div class="lg:col-span-4 space-y-6">
+<!-- Visual Reference Card -->
+<div class="bento-card rounded-xl overflow-hidden group">
+<div class="relative aspect-video">
+<img class="w-full h-full object-cover grayscale brightness-50 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="A professional athlete in a dark science laboratory setting, connected to various metabolic testing sensors and a face mask while performing a high-intensity treadmill run. The lighting is dramatic, with neon green and cyan accents reflecting off sleek technical equipment. The mood is highly focused and intense, emphasizing the fusion of peak athletic performance and advanced biometric data analysis in a futuristic cyber-athletic environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeTdGoHvSxFlpiV9focnreplPGfWzKEg4Ni0kLhZjGTsFWXE-odwgmzleI6NUnIA1lutBRdf7siUEQT40-L3iq6wmAc5sDVKxSrvf8qgyAPK1x0EVQY9hJMnfHjcHniz9yBpbONxWyAEqDX-NFWBBkp5daxEk9b_zyIfzKdDzQetGXENR6JI6q7gcM1T4nXdavgwe5MRI6gKTtVv78J6fsoCRzQoMU8TlM9UV6NCdPyw9s0maUd3HIF4ZpTwnY4n62ZapvC5_aX_rc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60"></div>
+<div class="absolute bottom-4 left-4">
+<p class="font-label-sm text-primary uppercase tracking-tighter">Reference Graph 04</p>
+<p class="text-xs text-on-surface-variant">Metabolic response during VO2 test</p>
+</div>
+</div>
+</div>
+<!-- AI Alex Suggestion -->
+<div class="bg-secondary-container/20 border border-secondary/30 rounded-xl p-5 relative overflow-hidden">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-on-secondary shadow-[0_0_15px_rgba(137,206,255,0.4)]">
+<span class="material-symbols-outlined">smart_toy</span>
+</div>
+<div>
+<p class="font-label-sm text-secondary uppercase mb-1">Alex Intelligence</p>
+<p class="font-body-md text-on-surface italic">"Recuerda que la acumulación de lactato libera protones (H+), los cuales son amortiguados por el bicarbonato..."</p>
+</div>
+</div>
+<!-- Decorative background element -->
+<div class="absolute -bottom-8 -right-8 w-24 h-24 bg-secondary/5 rounded-full blur-2xl"></div>
+</div>
+<!-- Technical Notes -->
+<div class="bento-card p-6 rounded-xl">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary">info</span>
+<h4 class="font-label-sm text-on-surface uppercase tracking-widest">Teacher's Note</h4>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                        Enfócate en la relación entre el equilibrio ácido-base y el control ventilatorio central. El CO2 metabólico no es el único factor en intensidades supra-umbrales.
+                    </p>
+</div>
+<!-- Navigation Summary -->
+<div class="grid grid-cols-5 gap-2">
+<div class="h-10 bg-primary-container text-on-primary-container flex items-center justify-center rounded-lg font-bold">1</div>
+<div class="h-10 bg-primary-container text-on-primary-container flex items-center justify-center rounded-lg font-bold">2</div>
+<div class="h-10 border border-primary-container bg-surface-container-high text-primary flex items-center justify-center rounded-lg font-bold kinetic-glow">3</div>
+<div class="h-10 bg-surface-container-highest border border-outline-variant/30 text-on-surface-variant flex items-center justify-center rounded-lg font-bold">4</div>
+<div class="h-10 bg-surface-container-highest border border-outline-variant/30 text-on-surface-variant flex items-center justify-center rounded-lg font-bold">5</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation (Shared Component Integration) -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container/90 dark:bg-surface-container/90 backdrop-blur-lg rounded-t-xl border-t border-outline-variant/20 shadow-[0_-4px_20px_rgba(0,255,148,0.1)] md:hidden">
+<div class="flex justify-around items-center h-20 px-2 pb-safe w-full">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">library_books</span>
+<span class="font-label-sm text-label-sm mt-1">Library</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">newspaper</span>
+<span class="font-label-sm text-label-sm mt-1">News</span>
+</a>
+<div class="relative -top-4">
+<button class="bg-secondary-container text-on-primary-container rounded-full p-4 shadow-[0_0_15px_rgba(0,255,148,0.4)] active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[32px]">smart_toy</span>
+</button>
+</div>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">monitor_heart</span>
+<span class="font-label-sm text-label-sm mt-1">Health</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm mt-1">Profile</span>
+</a>
+</div>
+</nav>
+<script>
+        // Simple Timer Simulation
+        let timeLeft = 892; // 14:52 in seconds
+        const timerElement = document.getElementById('timer');
+
+        const updateTimer = () => {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            if (timeLeft <= 300) { // Under 5 minutes
+                timerElement.classList.remove('text-primary-fixed-dim');
+                timerElement.classList.add('text-error', 'animate-pulse');
+            }
+            
+            if (timeLeft > 0) timeLeft--;
+        };
+
+        setInterval(updateTimer, 1000);
+
+        // Interaction for Options
+        const labels = document.querySelectorAll('label');
+        labels.forEach(label => {
+            label.addEventListener('click', () => {
+                // Clear others (simulating radio group logic for visual states)
+                labels.forEach(l => {
+                    l.classList.remove('border-primary-container/60', 'bg-primary-container/10');
+                    l.classList.add('border-outline-variant/30', 'bg-surface-container-highest/20');
+                    const text = l.querySelector('span');
+                    if(text) {
+                        text.classList.remove('text-primary');
+                        text.classList.add('text-on-surface');
+                    }
+                    const circle = l.querySelector('.w-6');
+                    if(circle) circle.classList.remove('border-primary-container', 'bg-primary-container');
+                });
+                
+                // Select this one
+                label.classList.add('border-primary-container/60', 'bg-primary-container/10');
+                label.classList.remove('border-outline-variant/30', 'bg-surface-container-highest/20');
+                const text = label.querySelector('span');
+                if(text) {
+                    text.classList.add('text-primary');
+                    text.classList.remove('text-on-surface');
+                }
+                const circle = label.querySelector('.w-6');
+                if(circle) circle.classList.add('border-primary-container', 'bg-primary-container');
+            });
+        });
+    </script>
+</body></html>

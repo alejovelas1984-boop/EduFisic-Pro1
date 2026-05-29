@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Videoteca - EduFisic Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed-variant": "#3e3c8f",
+                    "on-error-container": "#ffdad6",
+                    "background-deep": "#0F172A",
+                    "surface-navy": "#1E1B4B",
+                    "inverse-primary": "#0053db",
+                    "on-secondary-fixed": "#100563",
+                    "accent-success": "#10B981",
+                    "on-surface-variant": "#c3c6d7",
+                    "outline": "#8d90a0",
+                    "on-secondary-container": "#afadff",
+                    "electric-blue": "#2563EB",
+                    "surface": "#101415",
+                    "on-tertiary": "#283044",
+                    "tertiary-container": "#656d84",
+                    "primary-fixed": "#dbe1ff",
+                    "on-primary-fixed": "#00174b",
+                    "on-primary-container": "#eeefff",
+                    "surface-container": "#1d2022",
+                    "error": "#ffb4ab",
+                    "secondary": "#c3c0ff",
+                    "surface-container-high": "#272a2c",
+                    "secondary-fixed": "#e2dfff",
+                    "on-secondary": "#272377",
+                    "secondary-fixed-dim": "#c3c0ff",
+                    "error-container": "#93000a",
+                    "surface-container-low": "#191c1e",
+                    "on-tertiary-container": "#eef0ff",
+                    "surface-container-highest": "#323537",
+                    "on-error": "#690005",
+                    "on-tertiary-fixed": "#131b2e",
+                    "tertiary": "#bec6e0",
+                    "action-indigo": "#312E81",
+                    "outline-variant": "#434655",
+                    "on-primary": "#002a78",
+                    "surface-tint": "#b4c5ff",
+                    "background": "#101415",
+                    "surface-variant": "#323537",
+                    "primary-container": "#2563eb",
+                    "inverse-on-surface": "#2d3133",
+                    "on-tertiary-fixed-variant": "#3f465c",
+                    "tertiary-fixed-dim": "#bec6e0",
+                    "surface-bright": "#363a3b",
+                    "accent-danger": "#EF4444"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-lg": "32px",
+                    "margin-desktop": "32px",
+                    "gutter": "16px",
+                    "margin-mobile": "16px",
+                    "stack-sm": "8px",
+                    "stack-md": "16px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "body-md": ["Manrope"],
+                    "label-sm": ["JetBrains Mono"],
+                    "display-lg": ["Manrope"],
+                    "headline-lg-mobile": ["Manrope"],
+                    "headline-md": ["Manrope"],
+                    "headline-lg": ["Manrope"],
+                    "label-md": ["JetBrains Mono"],
+                    "display-lg-mobile": ["Manrope"],
+                    "body-lg": ["Manrope"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .kinetic-bg {
+            background: radial-gradient(circle at 50% 50%, #1E1B4B 0%, #101415 100%);
+        }
+        .glass-card {
+            background: rgba(30, 27, 75, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .video-glow:hover {
+            box-shadow: 0px 0px 20px rgba(37, 99, 235, 0.2);
+            border-color: rgba(37, 99, 235, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-electric-blue selection:text-white overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="bg-background/80 backdrop-blur-md border-b border-white/10 w-full top-0 sticky flex justify-between items-center px-margin-mobile h-16 z-50">
+<div class="flex items-center gap-3">
+<img alt="EduFisic Pro Logo" class="h-10 w-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3zmrHKaO9WKEO-7An7DcDt0t00rA3SY5zg-9EWYSPkgl0S-wL-jc_W9nFM4-YuEUlluRSxdlZMAVPuFVW8RJXuATgHaosmxBePit8IzAoTF-27Wvbyv34PGKg7QsL_5tF7OhHWrPXJ4QLi-4Y7UggiMGajpQD7ObsfMvqL9Q-HyrI8b2jqAajonKtA0cn0T0TWyeDYA_HVBcDASmx0QLySV7iG1tNudxJnRd3hAI0xaGwjEl1LROxhIWB4XehCg4bx1YmMt81XFXG"/>
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-electric-blue uppercase tracking-tighter">EduFisic Pro</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:opacity-80 transition-opacity p-2 rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-navy border border-white/10 flex items-center justify-center overflow-hidden">
+<img alt="Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1igAuo7QEVUNf8lawSjLdRDaU47ECth23y7EhnFHTBSvqWn6B3WwD0tVeIy33LXwyfJNeWXXoBSOySf1zN1uJSxqTm9RuyJUPdgij1ZIWaGY8CsHhkiN3tFnfiXwAVQbBqN7Aaj3qpmPEUJTkKThtk807gGUJGuw6NYEcykpqPywQ1GHiDEtUzllHZBsmngsHGDtQPL8LT2sLrDqtCDWzElenArNRban64NU1shXPGHE9jgBMh4_w4xBhPnGWCRCPhVH8K2CU1HPa"/>
+</div>
+</div>
+</header>
+<main class="min-h-screen pb-32">
+<!-- Hero Search Section -->
+<section class="px-margin-mobile py-stack-lg kinetic-bg">
+<div class="max-w-4xl mx-auto text-center space-y-stack-md">
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-white">Videoteca Técnica</h1>
+<p class="text-on-surface-variant font-body-lg max-w-2xl mx-auto">Explora guías detalladas y entrenamientos profesionales diseñados para la excelencia atlética.</p>
+<div class="relative mt-8 group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none text-on-surface-variant group-focus-within:text-electric-blue transition-colors">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="w-full bg-surface-navy border border-white/10 rounded-xl py-4 pl-12 pr-4 focus:ring-2 focus:ring-electric-blue focus:border-transparent outline-none transition-all text-white placeholder:text-outline" placeholder="Buscar tácticas, reglamentos o ejercicios..." type="text"/>
+</div>
+</div>
+</section>
+<!-- Categories Scroller -->
+<section class="px-margin-mobile py-stack-md overflow-x-auto whitespace-nowrap scrollbar-hide flex gap-stack-sm no-scrollbar">
+<button class="px-6 py-2 rounded-full bg-electric-blue text-white font-label-md text-label-md">Todos</button>
+<button class="px-6 py-2 rounded-full glass-card text-on-surface-variant font-label-md text-label-md hover:text-white transition-colors">Béisbol 5</button>
+<button class="px-6 py-2 rounded-full glass-card text-on-surface-variant font-label-md text-label-md hover:text-white transition-colors">Bolas Criollas</button>
+<button class="px-6 py-2 rounded-full glass-card text-on-surface-variant font-label-md text-label-md hover:text-white transition-colors">Voleibol</button>
+<button class="px-6 py-2 rounded-full glass-card text-on-surface-variant font-label-md text-label-md hover:text-white transition-colors">Atletismo</button>
+<button class="px-6 py-2 rounded-full glass-card text-on-surface-variant font-label-md text-label-md hover:text-white transition-colors">Gimnasia</button>
+</section>
+<!-- Featured Video (Asymmetric Highlight) -->
+<section class="px-margin-mobile py-stack-md">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-8 group cursor-pointer">
+<div class="relative aspect-video rounded-xl overflow-hidden glass-card video-glow transition-all duration-300">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A professional athlete performing a high-intensity sprint in a futuristic dark stadium illuminated by electric blue neon streaks. The lighting is cinematic and dramatic, emphasizing the athlete's muscular definition and kinetic movement. The atmosphere is high-performance, high-tech, and sophisticated with a deep navy and cool-toned color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuClaltRH_oMvPlg0CACObXjT6_IpAsdAmQGfvfQqFh08ou1VT2CEYMc8F39sLM6xDIYPVV-yN8otYZqpeczIfr-HK9IaSz7-k-73rqV6BZgMYLFqU6h-vztVeR0tgzlQbuaXINkp7--rbfoiT14eKva6VCcqfDFoXQLG08Qt9JUb_ibJ4aBanL9QkTndfy1f6uithsiKEtOWsT25xsRvMa1JtMvUBw5BzkkNA7jh6S75rjOpx_1dscyrQuk6TyDbBxHBUMsvsvxH6EL"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background-deep/90 via-transparent to-transparent flex flex-col justify-end p-6">
+<span class="inline-block bg-electric-blue text-white font-label-sm text-label-sm px-3 py-1 rounded mb-3 self-start">NUEVO - DESTACADO</span>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-white mb-2">Fundamentos del Béisbol 5: Movilidad</h3>
+<div class="flex items-center gap-4 text-on-surface-variant font-label-sm text-label-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">schedule</span> 12:45</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">bar_chart</span> Nivel Pro</span>
+</div>
+</div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="w-16 h-16 bg-electric-blue text-white rounded-full flex items-center justify-center shadow-2xl scale-90 group-hover:scale-100 transition-transform">
+<span class="material-symbols-outlined scale-150" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+</div>
+</div>
+<div class="md:col-span-4 flex flex-col gap-gutter">
+<div class="glass-card rounded-xl p-stack-md flex flex-col justify-between border-l-4 border-electric-blue">
+<div>
+<h4 class="font-headline-md text-headline-md text-white mb-2">Próxima Sesión Live</h4>
+<p class="text-on-surface-variant text-body-md">Técnicas avanzadas de Bolas Criollas con el Profe. Méndez.</p>
+</div>
+<button class="mt-4 bg-white text-background-deep font-bold py-2 px-4 rounded-lg hover:bg-electric-blue hover:text-white transition-all text-sm uppercase">Recordarme</button>
+</div>
+<div class="glass-card rounded-xl p-stack-md flex-1 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-20">
+<span class="material-symbols-outlined text-[80px]">emoji_events</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-white">Logros de Aprendizaje</h4>
+<p class="text-on-surface-variant text-label-sm mt-2">Has completado el 45% de la ruta "Maestro de Campo".</p>
+<div class="w-full bg-white/10 h-1.5 rounded-full mt-4">
+<div class="bg-electric-blue h-full rounded-full w-[45%]"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Video Grid -->
+<section class="px-margin-mobile py-stack-lg">
+<div class="flex items-center justify-between mb-stack-md">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-white">Explorar por Deporte</h2>
+<a class="text-electric-blue font-label-md text-label-md flex items-center gap-1 hover:underline" href="#">Ver todo <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-gutter">
+<!-- Card 1 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-video rounded-lg overflow-hidden glass-card video-glow transition-all mb-3">
+<img class="w-full h-full object-cover" data-alt="Close up action shot of a person playing bolas criollas on a traditional court during golden hour. The lighting is warm and directional, casting long shadows and highlighting the texture of the sand and the polished surface of the heavy balls. The style is modern athletic photography with a corporate precision feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOd68bOJLSEnxf25FhdhAhVLcjayE72Zp1-ujqsWu7-Isxj0Li98bEVXLHsSJLnYS9ExWx2_kL29yetSVPuJc_BBsR9jV5uF8y1ciXnUjIQ2UI6Gy0yf3jifayKnv8naYm84VysK1XLjUPcKwDah7H1_Yum-UzQIKWetIiDxHa7WxsIyqOSxICwQ5Sr-kdRrvHtMH8wrk8fg-BSm35Yj0EVoQbx78MO2KPaWaC4ZeirV39HYWJ5mQLA9heCkKOI301QfdiiM6kTrhe"/>
+<div class="absolute bottom-2 right-2 bg-background-deep/80 backdrop-blur-sm text-white text-[10px] font-label-sm px-2 py-1 rounded">15:20</div>
+</div>
+<h5 class="text-white font-headline-md text-headline-md line-clamp-1 group-hover:text-electric-blue transition-colors">Técnica de Arrimada Precisa</h5>
+<p class="text-on-surface-variant text-label-sm mt-1">Bolas Criollas • Intermedio</p>
+</div>
+<!-- Card 2 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-video rounded-lg overflow-hidden glass-card video-glow transition-all mb-3">
+<img class="w-full h-full object-cover" data-alt="A volleyball player mid-air during a powerful spike on an indoor professional court. Multiple flashes capture the kinetic energy of the jump. The background is a sophisticated navy blue arena with electric accents. High-speed photography captures the precise moment of impact with the ball in stunning clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbQQCu1mgABnFebnSPKBPnlahV0xbnD9LD8zCrPGxdR0BowVj7D2O62_ZnWZwh6H0vBT7VP-UVxGXw7MmnOZX9nZBAjG9HiLReT-5hd4ZDZw-et21sTMpT1BIUXSvwpVRg3YR9vk_4UU-EkcVRqhoUx0Y3dOnyzs_7JvOK9j-r7qPhHgQqpLSvaRd8iRZzC8F5XcYNzCR4Of2L1Bbq1d7-CFNGpT6wlHP_-oK6iVSHDqMI0_QHPvRnxKz32ilDCIEvC7UW9oaGxG5X"/>
+<div class="absolute bottom-2 right-2 bg-background-deep/80 backdrop-blur-sm text-white text-[10px] font-label-sm px-2 py-1 rounded">08:45</div>
+</div>
+<h5 class="text-white font-headline-md text-headline-md line-clamp-1 group-hover:text-electric-blue transition-colors">El Saque de Suspensión</h5>
+<p class="text-on-surface-variant text-label-sm mt-1">Voleibol • Avanzado</p>
+</div>
+<!-- Card 3 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-video rounded-lg overflow-hidden glass-card video-glow transition-all mb-3">
+<img class="w-full h-full object-cover" data-alt="A tactical diagram overlay on a photo of a baseball 5 court. Digital blue lines and geometric shapes indicate player positions and ball trajectories. The style is educational yet high-tech, like a cockpit display, utilizing a deep navy canvas with white and electric blue contrast for maximum data clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALcYSE1_8EPSvdLoTv58iFLSwlX7ZG5DBdKybl2pbsibFvmH8sMKALWN_ZNQmwY5bSV7Xj6atIhiqQ4iD1hGO8dckkmy-dcbaMsMH-gzFSxwsDkdQPqY1-EIQpusTUDDyf08dWHNY--nRbekRGJZtbKDQLBJ0gHcMAY_8AXVixA_Fsp_z_yzNsZjioHA-cSjYkIGNnStjUVy5ggEkznveXFj0HxOZHrltAh7eZ4qBMLqwnPLaTlxtBLC3UA1bZ0yvGOBXd0TJ_J-QM"/>
+<div class="absolute bottom-2 right-2 bg-background-deep/80 backdrop-blur-sm text-white text-[10px] font-label-sm px-2 py-1 rounded">22:10</div>
+</div>
+<h5 class="text-white font-headline-md text-headline-md line-clamp-1 group-hover:text-electric-blue transition-colors">Reglamento Oficial B5</h5>
+<p class="text-on-surface-variant text-label-sm mt-1">Béisbol 5 • Principiante</p>
+</div>
+<!-- Card 4 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-video rounded-lg overflow-hidden glass-card video-glow transition-all mb-3">
+<img class="w-full h-full object-cover" data-alt="Athletes starting a race on a blue professional track. The low angle shot captures the focus and tension at the starting blocks. The lighting is crisp and cool, highlighting the modern architecture of the stadium. The overall aesthetic communicates academic rigor and athletic excellence through clean lines and professional-grade quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAnQuE5UV1pp6PnRBJT37iiOvRljAupblxCBAIx7youQl6uDJUKRY3DakpGfUavL2TbQEgo1mInIkSN50HjTkzGWXNfQYgKbvij7O7aoXMkXJdkeQEVlcRTQ6GE7DpNtFCmK6AhdNj_sHjgPM4XICdAL7eMKHPLq-HtjRgMat1mHcmFX_GCIei5-yp6pbF66Q1Xrh5azX8iAPpPQhk7NviMoVMoDL4g2S_upb8F-7ulfyCed1dgiMWAqHBw5PAIz30qTTDUGzl_Ea8"/>
+<div class="absolute bottom-2 right-2 bg-background-deep/80 backdrop-blur-sm text-white text-[10px] font-label-sm px-2 py-1 rounded">05:30</div>
+</div>
+<h5 class="text-white font-headline-md text-headline-md line-clamp-1 group-hover:text-electric-blue transition-colors">Arranque Explosivo 100m</h5>
+<p class="text-on-surface-variant text-label-sm mt-1">Atletismo • Pro</p>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-2 pb-safe bg-surface-container/90 backdrop-blur-xl border-t border-white/5 z-50 rounded-t-xl shadow-[0px_-4px_20px_rgba(37,99,235,0.1)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">newspaper</span>
+<span class="font-label-sm text-label-sm">Noticias</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold bg-primary-container/20 rounded-xl px-3 py-1 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">video_library</span>
+<span class="font-label-sm text-label-sm">Videoteca</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="font-label-sm text-label-sm">Chat IA</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Social</span>
+</a>
+</nav>
+<!-- FAB (Suppressed as per rules for Details/Gallery focus) -->
+<script>
+        // Micro-interaction for category chips
+        const chips = document.querySelectorAll('button.glass-card');
+        chips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                chips.forEach(c => {
+                    c.classList.remove('bg-electric-blue', 'text-white');
+                    c.classList.add('glass-card', 'text-on-surface-variant');
+                });
+                chip.classList.remove('glass-card', 'text-on-surface-variant');
+                chip.classList.add('bg-electric-blue', 'text-white');
+            });
+        });
+
+        // Atmospheric parallax effect on kinetic-bg
+        window.addEventListener('mousemove', (e) => {
+            const bg = document.querySelector('.kinetic-bg');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            bg.style.background = `radial-gradient(circle at ${50 + (x - 0.5) * 20}% ${50 + (y - 0.5) * 20}%, #1E1B4B 0%, #101415 100%)`;
+        });
+    </script>
+</body></html>

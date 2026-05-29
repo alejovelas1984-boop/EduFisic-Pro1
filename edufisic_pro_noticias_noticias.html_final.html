@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Noticias y Rendimiento | EDUFISIC PRO</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Lexend:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#30353a",
+                        "error-container": "#93000a",
+                        "on-error": "#690005",
+                        "surface-container-low": "#171c20",
+                        "on-tertiary-container": "#a74400",
+                        "secondary": "#89ceff",
+                        "on-primary-fixed-variant": "#00522c",
+                        "secondary-fixed": "#c9e6ff",
+                        "on-secondary": "#00344d",
+                        "secondary-fixed-dim": "#89ceff",
+                        "surface-container-high": "#262b2f",
+                        "surface-variant": "#30353a",
+                        "primary-container": "#00ff94",
+                        "inverse-on-surface": "#2c3135",
+                        "outline-variant": "#3b4b3e",
+                        "on-tertiary-fixed-variant": "#7a3000",
+                        "surface-bright": "#353a3e",
+                        "tertiary-fixed-dim": "#ffb693",
+                        "tertiary": "#fffaff",
+                        "on-tertiary-fixed": "#351000",
+                        "surface-tint": "#00e383",
+                        "background": "#0f1418",
+                        "on-primary": "#00391d",
+                        "on-surface-variant": "#b9cbbb",
+                        "outline": "#849586",
+                        "on-tertiary": "#561f00",
+                        "tertiary-container": "#ffd7c6",
+                        "primary-fixed": "#5bffa1",
+                        "on-secondary-container": "#00344e",
+                        "surface": "#0f1418",
+                        "on-secondary-fixed-variant": "#004c6e",
+                        "on-error-container": "#ffdad6",
+                        "inverse-primary": "#006d3c",
+                        "on-secondary-fixed": "#001e2f",
+                        "primary": "#f2fff1",
+                        "on-surface": "#dfe3e9",
+                        "surface-container-lowest": "#0a0f13",
+                        "surface-container": "#1b2024",
+                        "inverse-surface": "#dfe3e9",
+                        "surface-dim": "#0f1418",
+                        "primary-fixed-dim": "#00e383",
+                        "on-background": "#dfe3e9",
+                        "on-primary-fixed": "#00210e",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#00a2e6",
+                        "tertiary-fixed": "#ffdbcc",
+                        "on-primary-container": "#00713f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "margin-mobile": "16px",
+                        "max-width": "1440px",
+                        "gutter": "24px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Anton"],
+                        "body-lg": ["Lexend"],
+                        "label-md": ["Lexend"],
+                        "label-sm": ["Lexend"],
+                        "headline-lg": ["Anton"],
+                        "body-md": ["Lexend"],
+                        "headline-md": ["Anton"],
+                        "display-xl": ["Anton"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["32px", {"lineHeight": "38px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["32px", {"lineHeight": "40px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                        "display-xl": ["80px", {"lineHeight": "88px", "letterSpacing": "0.02em", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #0f1418;
+            color: #dfe3e9;
+            overflow-x: hidden;
+        }
+        .bento-card {
+            background: rgba(23, 28, 32, 0.7);
+            border: 1px solid rgba(59, 75, 62, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .bento-card:hover {
+            border-color: rgba(0, 255, 148, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px -10px rgba(0, 255, 148, 0.1);
+        }
+        .neon-glow {
+            box-shadow: 0 0 15px rgba(0, 255, 148, 0.2);
+        }
+        .scroll-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .performance-graph-bar {
+            transition: height 1s ease-out;
+        }
+    </style>
+</head>
+<body class="font-body-md">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-outline-variant/10 shadow-sm">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 w-full max-w-max-width mx-auto">
+<div class="flex items-center gap-4">
+<img alt="EDUFISIC PRO Logo" class="h-8 w-8 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3zmrHKaO9WKEO-7An7DcDt0t00rA3SY5zg-9EWYSPkgl0S-wL-jc_W9nFM4-YuEUlluRSxdlZMAVPuFVW8RJXuATgHaosmxBePit8IzAoTF-27Wvbyv34PGKg7QsL_5tF7OhHWrPXJ4QLi-4Y7UggiMGajpQD7ObsfMvqL9Q-HyrI8b2jqAajonKtA0cn0T0TWyeDYA_HVBcDASmx0QLySV7iG1tNudxJnRd3hAI0xaGwjEl1LROxhIWB4XehCg4bx1YmMt81XFXG"/>
+<h1 class="font-headline-md text-headline-md text-primary-fixed-dim tracking-tighter">EDUFISIC PRO</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-variant/50 transition-colors p-2 rounded-full active:scale-95">search</button>
+<div class="w-10 h-10 rounded-full border-2 border-primary-container overflow-hidden active:scale-95 transition-transform cursor-pointer">
+<img class="w-full h-full object-cover" data-alt="A professional athletic profile portrait of a male athlete in a dark studio setting. High-contrast lighting highlights his focused expression and physical conditioning. The mood is serious, elite, and cinematic, consistent with a high-performance sports brand aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCRs_rbMyfZbEMVG_OKOTVMCvx-1IJ8rGqRpLymIHXyV2pkUUxsHQDXGNWhrS3HiZM8QQwnjMTDdxK-B0w5kjGyGLYev5CCdRYz5M90N7dpkCYJNJ4VfxM-xVJu5u1EEOiUzg6SXnM4ehp_cL7BYoupSzbjSa1Pw7SpgD8s32RDs9XxTUi5E_O6mSw38DhjyfsZPLYIKw4akpfa0NaG1B1VPrTAKn_KgbWU2ec52R_gun3LzO_bUJIHcTo_U6nSpmYerW2egdQoO0_"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto">
+<!-- Header Section -->
+<section class="mb-10">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<span class="font-label-sm text-primary-container tracking-widest uppercase mb-2 block">Panel de Rendimiento</span>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">NOTICIAS &amp; MÉTRICAS</h2>
+</div>
+<div class="flex gap-2">
+<span class="flex items-center gap-2 bg-surface-container-high px-4 py-2 rounded-full border border-outline-variant/20">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="font-label-sm text-on-surface-variant">VIVO: MARATÓN VALENCIA</span>
+</span>
+</div>
+</div>
+</section>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-4 md:grid-cols-12 gap-gutter">
+<!-- Performance Metrics (Real-time) -->
+<div class="col-span-4 md:col-span-8 bento-card rounded-xl p-6 flex flex-col gap-6">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container">monitoring</span>
+                        RENDIMIENTO EN TIEMPO REAL
+                    </h3>
+<div class="text-right">
+<p class="font-label-sm text-on-surface-variant">ESTADO GLOBAL</p>
+<p class="font-headline-md text-primary-container">94%</p>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-surface-container rounded-lg p-4 border border-outline-variant/10">
+<p class="font-label-sm text-on-surface-variant mb-1">Ritmo Cardíaco</p>
+<div class="flex items-end gap-1">
+<span class="font-headline-md text-secondary">72</span>
+<span class="font-label-sm mb-1 text-on-surface-variant">BPM</span>
+</div>
+</div>
+<div class="bg-surface-container rounded-lg p-4 border border-outline-variant/10">
+<p class="font-label-sm text-on-surface-variant mb-1">VO2 Máx</p>
+<div class="flex items-end gap-1">
+<span class="font-headline-md text-primary-container">58.4</span>
+<span class="font-label-sm mb-1 text-on-surface-variant">ml/kg</span>
+</div>
+</div>
+<div class="bg-surface-container rounded-lg p-4 border border-outline-variant/10">
+<p class="font-label-sm text-on-surface-variant mb-1">Recuperación</p>
+<div class="flex items-end gap-1">
+<span class="font-headline-md text-tertiary-fixed-dim">82</span>
+<span class="font-label-sm mb-1 text-on-surface-variant">%</span>
+</div>
+</div>
+<div class="bg-surface-container rounded-lg p-4 border border-outline-variant/10">
+<p class="font-label-sm text-on-surface-variant mb-1">Carga Semanal</p>
+<div class="flex items-end gap-1">
+<span class="font-headline-md text-on-primary-fixed">1.2k</span>
+<span class="font-label-sm mb-1 text-on-surface-variant">TSS</span>
+</div>
+</div>
+</div>
+<div class="flex-1 min-h-[200px] flex items-end justify-between gap-2 pt-4">
+<!-- Dynamic Bars Simulation -->
+<div class="flex-1 bg-primary-container/20 rounded-t-sm performance-graph-bar" style="height: 60%"></div>
+<div class="flex-1 bg-primary-container/30 rounded-t-sm performance-graph-bar" style="height: 45%"></div>
+<div class="flex-1 bg-primary-container/40 rounded-t-sm performance-graph-bar" style="height: 80%"></div>
+<div class="flex-1 bg-primary-container/60 rounded-t-sm performance-graph-bar" style="height: 65%"></div>
+<div class="flex-1 bg-primary-container/80 rounded-t-sm performance-graph-bar" style="height: 90%"></div>
+<div class="flex-1 bg-primary-container rounded-t-sm performance-graph-bar neon-glow" style="height: 100%"></div>
+<div class="flex-1 bg-primary-container/70 rounded-t-sm performance-graph-bar" style="height: 55%"></div>
+<div class="flex-1 bg-primary-container/40 rounded-t-sm performance-graph-bar" style="height: 40%"></div>
+<div class="flex-1 bg-primary-container/20 rounded-t-sm performance-graph-bar" style="height: 75%"></div>
+</div>
+</div>
+<!-- Featured News -->
+<div class="col-span-4 bento-card rounded-xl overflow-hidden group">
+<div class="relative h-48">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A high-intensity photo of a track sprinter exploding from the starting blocks. The lighting is cinematic, using strong side-lighting to define muscle structure. The color grading is deep and moody with neon green accents from the stadium's digital timing boards. Professional high-performance athletic photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCt_6-HVZYZlR1l_SKf1Hbvh-J9CtbhmKwGFoAeAR2kvn5Z5gTRL7ALoIiwynjqPe5ZPypYeXcS37pdMHBZJwm67R0el2mYzJ96mAbcAnCUcoAj-UDMi2GYEn1ZKlKQlvgqAd0LcCmcUyO1oaDeZ4GgRlsFzF_uCzZjnRQASXDlNR_zQRxXRsU49jekkwoaWJdOwtjG4AxcyFzpG1wqtbtAGAvFDtrQy0lVkYgP2j16E2ZqoVPesfe3AZ7BRIVVy6T9SXEYpRxpc2vh"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low to-transparent"></div>
+<span class="absolute top-4 left-4 bg-primary-container text-on-primary-container px-3 py-1 rounded-full font-label-sm">URGENTE</span>
+</div>
+<div class="p-6">
+<h4 class="font-headline-md text-on-surface mb-2 leading-tight">Nuevas fronteras en nutrición molecular aplicada al Trail.</h4>
+<p class="font-body-md text-on-surface-variant line-clamp-2">Investigadores revelan que la periodización de carbohidratos podría mejorar el rendimiento en un 12% extra.</p>
+<button class="mt-4 flex items-center gap-2 text-primary-container font-label-md group-hover:gap-4 transition-all">
+                        LEER MÁS <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- News Feed Scroll -->
+<div class="col-span-4 md:col-span-4 bento-card rounded-xl p-6 flex flex-col gap-4 max-h-[500px]">
+<h3 class="font-label-md text-primary-fixed-dim uppercase tracking-widest border-b border-outline-variant/20 pb-2">Feed Global</h3>
+<div class="overflow-y-auto scroll-hide flex flex-col gap-4">
+<div class="flex gap-4 p-2 hover:bg-surface-variant/20 rounded-lg transition-colors">
+<div class="w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden border border-outline-variant/10">
+<img class="w-full h-full object-cover" data-alt="Close up of a smart watch displaying biometric data on an athlete's wrist during a night run. The screen glows with bright lime green and electric blue colors. The background is blurred city lights, creating a high-tech, futuristic urban fitness vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPrzjngueXSe4Efj08m7HWj2_Q7EV9M-1LuaP_XRznJBxaeocMVML1ncS6pB_2WjP2If2HYmt89eN-WLTwyj8aUBs0FVUB0SZQzWWJgJcwSLWwWa34FhY27gOnTtkBHPRzqPzckLxUHoec15hAho8tKlG9I1OkZHkqx0fBeudImzbgx5joyOiVfrX4rLmgwTq8HxHgUbPLBTpvNyjIknSeMeG8MWLg7zP4tSqOUSsqpgxtCuMoSr8Dm6U-DZJpcLXHBrCDohiEkAEU"/>
+</div>
+<div>
+<p class="font-label-sm text-secondary-fixed-dim">HACE 15 MIN</p>
+<p class="font-body-md text-on-surface leading-snug">Récord mundial en los 100m mariposa: Tecnología de traje bio-mético.</p>
+</div>
+</div>
+<div class="flex gap-4 p-2 hover:bg-surface-variant/20 rounded-lg transition-colors">
+<div class="w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden border border-outline-variant/10">
+<img class="w-full h-full object-cover" data-alt="A focused cyclist climbing a steep mountain road during sunrise. The lighting is warm and dramatic, silhouetting the athlete against the orange sky. The visual style is epic and aspirational, highlighting endurance and the raw beauty of elite cycling." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-gL1-BD9sLZ3L3iDMFdLrh1WP_eKh1U9AGKPEUJbXLg9SQYIGPPMDgZKqHmLxUgC9C4IfdqwHS-dLiX_rhrxrnS4hrnHsZcV-mYF_40zwwNlW113FsdIadIZh7tTBVOi_9vb9a_BdFdo-LMW8tOj5edrHCjNOYIM6Cdy3zX5w9PxJcuOU8wxdzBLqOwWyNjl78lpC2Nsz8qgyU7kJebwYoIZ7cF3kpXYsDnE2zEgwjjJl874xgmlKorTr_xPt3LwL9d49mKyYd7FW"/>
+</div>
+<div>
+<p class="font-label-sm text-secondary-fixed-dim">HACE 1 HORA</p>
+<p class="font-body-md text-on-surface leading-snug">Tour de France: Los datos de potencia revelan un ascenso histórico en el Alpe d'Huez.</p>
+</div>
+</div>
+<div class="flex gap-4 p-2 hover:bg-surface-variant/20 rounded-lg transition-colors">
+<div class="w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden border border-outline-variant/10">
+<img class="w-full h-full object-cover" data-alt="A wide angle shot of a futuristic sports arena with advanced digital displays and neon green structural elements. The atmosphere is electric and high-energy, suggesting the future of professional sports broadcasting and fan interaction." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAu-aQKjQm1jJDe2RPSLRAFmczwVo3lgEsrnTcXdzCT0t_XeDgjoa5dnbOiG4CMqxHVQ_rnraw1RvfPRfrbnLBxCxqBlqFjxag3f7ms84zfs_4g_cUIHPOBmz649xmPgLBJ2jLtFjeFK3ZAG9EqWNF6PAAarfpOVAkRX9k_OLjG-99pXlOsPPHDMsK4palP9cMWJ095haGeaLJJNSfjBi0lI24Mfs51pIGl-v7WBKZYs8brXvQltWjr7L8mUgvnrlk4ASWv7zQ2hQP4"/>
+</div>
+<div>
+<p class="font-label-sm text-secondary-fixed-dim">HACE 3 HORAS</p>
+<p class="font-body-md text-on-surface leading-snug">NBA: Inteligencia Artificial predice lesiones de tobillo con 90% de precisión.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- AI Insight Widget -->
+<div class="col-span-4 md:col-span-8 bento-card rounded-xl p-6 bg-primary-container text-on-primary-container relative overflow-hidden flex items-center justify-between">
+<div class="relative z-10 flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<span class="font-label-md uppercase tracking-wider">Alex Insight</span>
+</div>
+<h4 class="font-headline-md">"Tu nivel de cortisol sugiere que hoy es mejor priorizar recuperación activa."</h4>
+<button class="w-fit mt-2 bg-on-primary-container text-primary-container px-6 py-2 rounded-full font-label-md active:scale-95 transition-transform">AJUSTAR PLAN</button>
+</div>
+<div class="absolute right-[-10%] top-[-20%] opacity-20 pointer-events-none">
+<span class="material-symbols-outlined text-[300px]" style="font-variation-settings: 'FILL' 1;">query_stats</span>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container/90 dark:bg-surface-container/90 backdrop-blur-lg border-t border-outline-variant/20 shadow-[0_-4px_20px_rgba(0,255,148,0.1)]">
+<div class="flex justify-around items-center h-20 px-2 pb-safe w-full max-w-screen-xl mx-auto">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">library_books</span>
+<span class="font-label-sm text-label-sm">Library</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-primary-container bg-secondary-container rounded-full px-4 py-1.5 shadow-[0_0_15px_rgba(0,255,148,0.4)] active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">newspaper</span>
+<span class="font-label-sm text-label-sm">News</span>
+</a>
+<div class="relative -top-6">
+<button class="bg-primary-container text-on-primary-container w-16 h-16 rounded-full flex items-center justify-center shadow-[0_0_25px_rgba(0,255,148,0.6)] active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</button>
+</div>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">monitor_heart</span>
+<span class="font-label-sm text-label-sm">Health</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</div>
+</nav>
+<script>
+        // Atmospheric interaction: Randomly fluctuate the performance graph bars slightly to simulate "real-time" data
+        const bars = document.querySelectorAll('.performance-graph-bar');
+        setInterval(() => {
+            bars.forEach(bar => {
+                const currentHeight = parseInt(bar.style.height);
+                const noise = (Math.random() - 0.5) * 4; // Tiny fluctuation
+                const newHeight = Math.min(Math.max(currentHeight + noise, 20), 100);
+                bar.style.height = newHeight + '%';
+            });
+        }, 3000);
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('bg-surface/95');
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('bg-surface/95');
+                header.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body></html>
